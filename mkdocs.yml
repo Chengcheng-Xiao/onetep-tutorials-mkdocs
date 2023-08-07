@@ -1,0 +1,101 @@
+site_name: ONETEP Tutorials
+site_author: ONETEP collective
+# site_url: https://friendly-broccoli-22e4d939.pages.github.io/
+site_description: Tutorials for ONTEP.
+
+# Copyright
+copyright: Copyright &copy; 2023 ONETEP Collective
+
+# Repository
+# repo_name: onetep-devel/tutorials
+# repo_url: https://github.com/onetep-devel/tutorials
+# edit_uri: ""
+
+
+extra_javascript:
+  - javascripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+# Configuration
+theme:
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: light
+      toggle:
+        icon: material/weather-night #material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: dark
+      toggle:
+        icon: material/weather-sunny #material/toggle-switch
+        name: Switch to light mode
+  logo: assets/onetep-logo.svg
+  favicon: assets/favicon.ico
+  name: material
+  # custom_dir: overrides
+  language: 'en'
+  font: false
+  # features:
+    # - navigation.tabs
+    # - navigation.sections
+    # - navigation.top
+    #- navigation.expand
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.code.copy
+    - content.code.annotate
+
+
+markdown_extensions:
+  - def_list
+  - admonition
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.keys
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+
+# plugins:
+#     - with-pdf
+
+nav:
+  - Introduction: index.md
+  - Tutorials:
+    - Tutorial 1: tutorials/tutorial_1/tutorial_1.md
+
