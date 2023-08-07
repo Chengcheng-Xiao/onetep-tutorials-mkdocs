@@ -157,6 +157,10 @@ to create the SiH$_4$ molecule. -->
 <script src="../../../javascripts/jmol/jsmol/js/Jmol2.js"></script>
 <script> jmolInitialize("../../../javascripts/jmol/jsmol");</script>
 
+<!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script> -->
+<!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/js/Jmol2.js"></script> -->
+<!-- <script> jmolInitialize("https://chemapps.stolaf.edu/jmol/jsmol/jsmol");</script> -->
+
 <div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center">
 <script>
 var offsetHeight = document.getElementById('vis').offsetHeight;
@@ -164,6 +168,7 @@ var offsetWidth = document.getElementById('vis').offsetWidth;
 jmolApplet([offsetWidth-2,offsetHeight-2],"load ../files/SiH4.vasp {1 1 1}; set frank off; set displayCellParameters off;set background white","0")
 </script>
 </div>
+
 
 
 The last essential parameter to specify is the kinetic energy cutoff
