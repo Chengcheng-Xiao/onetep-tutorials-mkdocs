@@ -1,5 +1,7 @@
 # Tutorial 1: Setting up Simple ONETEP Calculations
-:octicons-versions-24: Version: all versions :material-pen: [Nicholas D.M. Hine](N.D.M.Hine@warwick.ac.uk) ; [Chris-Kriton Skylaris](c.skylaris@soton.ac.uk)
+:octicons-versions-24: Version: all versions 
+:material-pen: [Nicholas D.M. Hine](mailto:N.D.M.Hine@warwick.ac.uk); 
+[Chris-Kriton Skylaris](mailto:c.skylaris@soton.ac.uk)
  <!-- · :octicons-tag-16: Post-processing | DFT -->
 
 ## Input files

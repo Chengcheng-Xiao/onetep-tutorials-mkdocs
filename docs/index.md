@@ -4,7 +4,7 @@
 
 ## Contents:
 
-- [Tutorial 1](../tutorials/tutorial_1/tutorial_1): Setting up Simple ONETEP Calculations
+- [Tutorial 1](tutorials/tutorial_1/tutorial_1.md): Setting up Simple ONETEP Calculations
 
 <!-- * `mkdocs new [dir-name]` - Create a new project. -->
 <!-- * `mkdocs serve` - Start the live-reloading docs server. -->
