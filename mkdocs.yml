@@ -10,6 +10,9 @@ copyright: Copyright &copy; 2023 ONETEP Collective
 # repo_name: onetep-devel/tutorials
 # repo_url: https://github.com/onetep-devel/tutorials
 # edit_uri: ""
+repo_name: Chengcheng-Xiao/onetep-tutorials-mkdocs
+repo_url: https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs
+edit_uri: ""
 
 
 extra_javascript:
