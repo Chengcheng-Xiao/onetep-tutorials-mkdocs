@@ -4,7 +4,9 @@
 
 ## Contents:
 
-- [Tutorial 1](tutorials/tutorial_1/tutorial_1.md): Setting up Simple ONETEP Calculations
+- [Tutorial 1](tutorials/tutorial_1/tutorial.md): Setting up Simple ONETEP Calculations
+- [Tutorial 5](tutorials/tutorial_5/tutorial.md): Analysis and visualization 
+- [Tutorial 9](tutorials/tutorial_9/tutorial.md): DFT+U on strongly correlated magnetic materials: A case study on antiferromagnetic Hematite 
 
 <!-- * `mkdocs new [dir-name]` - Create a new project. -->
 <!-- * `mkdocs serve` - Start the live-reloading docs server. -->

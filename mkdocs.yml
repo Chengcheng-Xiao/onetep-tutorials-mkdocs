@@ -80,15 +80,14 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
-  - pymdownx.highlight:
-      linenums: true
   - pymdownx.arithmatex:
       generic: true
   - footnotes
   - toc:
       permalink: true
   - pymdownx.highlight:
-      anchor_linenums: true
+      linenums: true
+      # anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - attr_list
@@ -101,5 +100,7 @@ markdown_extensions:
 nav:
   - Introduction: index.md
   - Tutorials:
-    - Tutorial 1: tutorials/tutorial_1/tutorial_1.md
+    - Tutorial 1: tutorials/tutorial_1/tutorial.md
+    - Tutorial 5: tutorials/tutorial_5/tutorial.md
+    - Tutorial 9: tutorials/tutorial_9/tutorial.md
 
