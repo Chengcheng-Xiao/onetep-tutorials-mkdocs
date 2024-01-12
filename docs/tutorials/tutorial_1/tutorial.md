@@ -153,43 +153,44 @@ For example, the vector for the first Si-H bond is (2.2535, 1.5935,
 to create the SiH$_4$ molecule. -->
 
 <!-- loading local scripts -->
-<!-- <script src="../../../javascripts/jmol/jsmol/JSmol.min.js"></script> -->
-<!-- <script src="../../../javascripts/jmol/jsmol/js/Jmol2.js"></script> -->
-<!-- <script> jmolInitialize("../../../javascripts/jmol/jsmol");</script> -->
+<script type="text/javascript" src="../../../javascripts/jmol/jsmol/JSmol.min.js"></script>
+<script type="text/javascript" src="../../../javascripts/jmol/jsmol/js/Jmol2.js"></script>
+<script type="text/javascript"> jmolInitialize("../../../javascripts/jmol/jsmol");</script>
 <!-- loading external scripts (only works with public repo) -->
 <!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script> -->
 <!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/js/Jmol2.js"></script> -->
 <!-- <script> jmolInitialize("https://chemapps.stolaf.edu/jmol/jsmol/jsmol");</script> -->
-<!--  -->
+
 <!-- create div and autoadjust hight and width -->
+<div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center">
+<script type="text/javascript">
+var offsetHeight = document.getElementById('vis').offsetHeight;
+var offsetWidth  = document.getElementById('vis').offsetWidth;
+jmolApplet([offsetWidth-2,offsetHeight-2], "load ../files/SiH4.vasp {1 1 1}; set frank off; set displayCellParameters off; set background white")
+</script>
+</div>
+
+<!-- using remote JSmol -->
 <!-- <div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center"> -->
 <!-- <script> -->
 <!-- var offsetHeight = document.getElementById('vis').offsetHeight; -->
 <!-- var offsetWidth  = document.getElementById('vis').offsetWidth; -->
-<!-- jmolApplet([offsetWidth-2,offsetHeight-2], "load ../files/SiH4.vasp {1 1 1}; set frank off; set displayCellParameters off; set background white""0") -->
+<!-- var Info = { -->
+<!-- height: offsetHeight-2, -->
+<!-- width: offsetWidth-2, -->
+<!-- isSigned: false, -->
+<!-- j2sPath: "https://chemapps.stolaf.edu/jmol/jsmol/j2s", -->
+<!-- serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php", -->
+<!-- use: "HTML5"}; -->
+<!-- jmolApplet = Jmol.getApplet("jmol",Info) -->
+<!-- Jmol.script(jmolApplet, -->
+<!--   "load ../files/SiH4.vasp {1 1 1}; \ -->
+<!--   set frank off; \ -->
+<!--   set displayCellParameters off; \ -->
+<!--   set background white; \ -->
+<!--   set platformSpeed = 2","0") -->
 <!-- </script> -->
 <!-- </div> -->
-
-<div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center">
-<script>
-var offsetHeight = document.getElementById('vis').offsetHeight;
-var offsetWidth  = document.getElementById('vis').offsetWidth;
-var Info = {
-height: offsetHeight-2,
-width: offsetWidth-2,
-isSigned: false,
-j2sPath: "https://chemapps.stolaf.edu/jmol/jsmol/j2s",
-serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
-use: "HTML5"};
-jmolApplet = Jmol.getApplet("jmol",Info)
-Jmol.script(jmolApplet,
-  "load ../files/SiH4.vasp {1 1 1}; \
-  set frank off; \
-  set displayCellParameters off; \
-  set background white; \
-  set platformSpeed = 2","0")
-</script>
-</div>
 
 
 The last essential parameter to specify is the kinetic energy cutoff
