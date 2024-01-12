@@ -74,3 +74,8 @@ html {
 .md-typeset table:not([class]) {
     display: table;
 }
+
+.md-typeset code {
+  border: solid 1px #e1e4e5;
+  border-radius: 0.2rem;
+}

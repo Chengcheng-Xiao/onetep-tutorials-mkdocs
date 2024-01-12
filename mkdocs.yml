@@ -43,7 +43,6 @@ theme:
   logo: assets/onetep-logo.svg
   favicon: assets/favicon.ico
   name: material
-  # custom_dir: overrides
   language: 'en'
   font: false
   # features:
