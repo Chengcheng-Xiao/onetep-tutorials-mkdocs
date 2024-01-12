@@ -3,7 +3,8 @@
   --md-primary-fg-color:        #003E74;
   --md-primary-fg-color--light: #D4EFFC;
   --md-primary-fg-color--dark:  #002147;
-  --md-default-fg-color--light: hsla(var(--md-hue), 18%, 73%, 0.62);
+  --md-default-fg-color--light: #000000;
+  /* --md-default-fg-color--light: hsla(var(--md-hue), 18%, 73%, 0.62); */
   --md-accent-fg-color:         #00aeff;
   --md-footer-bg-color--dark:   hsla(0, 0%, 0%, 1.0);
   --md-primary-bg-color:        #ffffff;
@@ -78,4 +79,12 @@ html {
 .md-typeset code {
   border: solid 1px #e1e4e5;
   border-radius: 0.2rem;
+}
+
+.md-typeset .linenos{
+  border: solid 1px #e1e4e5;
+  border-radius: 0.2rem;
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
 }
