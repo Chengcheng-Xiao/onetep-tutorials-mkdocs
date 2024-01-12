@@ -8,6 +8,7 @@
 ## Introduction
 
 This tutorial demonstrates how to:
+
   - Use ONETEP to calculate various electronic properties,
   - Instruct ONETEP to generate files needed for later visualization of orbitals, electronic densities and potentials,
   - Visualize these properties using VMD [^1],
@@ -20,7 +21,7 @@ This tutorial demonstrates how to:
 
 In this part we will perform a calculation on the CH$_3$ radical:
 
-![image-1](../files/T5_CH3.png){ width="15%", .center }
+![image-1](../files/T5_CH3.png){ width="20%", .center }
 <figcaption>Fig.1: The CH3 radical. Visualization in VM.</figcaption>
 <!-- .. _Figure fig:CH3:
 .. figure:: _static/tutorial_5/T5_CH3.png
@@ -31,7 +32,7 @@ In this part we will perform a calculation on the CH$_3$ radical:
    :target: _static/tutorial_5/T5_CH3.png -->
 
 As this molecule contains an odd number of electrons we need to perform a spin-polarised (unrestricted)
-calculation. In ONETEP this is achieved by optimising a different density kernel for the "up" and the "down" spin:
+calculation. In ONETEP this is achieved by optimising a different density kernel $K$ for the "up"($\uparrow$) and the "down"($\downarrow$) spin:
 
 $$
 \rho\left(\mathbf{r}, \mathbf{r}^{\prime}\right)=\sum_{\alpha \beta} \phi_\alpha(\mathbf{r}) K^{\alpha \beta(\uparrow)} \phi_\beta^*\left(\mathbf{r}^{\prime}\right)+\sum_{\alpha \beta} \phi_\alpha(\mathbf{r}) K^{\alpha \beta(\downarrow)} \phi_\beta^*\left(\mathbf{r}^{\prime}\right)
@@ -46,33 +47,44 @@ $$
    :target: _static/tutorial_5/T5_up_down_spin.png -->
 
 
-The ONETEP input is in the file [:material-download:methyl.dat](../files/methyl.dat)
-and the coordinates (in angstroem) are in the file [:material-download:methyl.pdb](../files/methyl.pdb).
-The ONETEP input file contains the coordinates as well (in atomic units), but not in a form directly
+### Prepreation
+The ONETEP input for this calcualtion are:
+
+- Tnput: [:material-download:methyl.dat](../files/methyl.dat)
+- Geometry (in angstroem): [:material-download:methyl.pdb](../files/methyl.pdb)
+
+Note that the input file contains the coordinates as well (in atomic units), but not in a form directly
 readable by visualization packages. The ``.pdb`` file can be directly visualized in VMD.
 
-The [:material-download:methyl.dat](../files/methyl.dat) file specifies a single point energy
-calculation (`TASK SINGLEPOINT`) with a psinc kinetic energy cutoff of 800 eV (`CUTOFF_ENERGY 800.0 eV`),
+The input file specifies a single point energy calculation (`TASK SINGLEPOINT`) with a psinc kinetic energy cutoff of 800 eV (`CUTOFF_ENERGY 800.0 eV`),
 the Perdew-Zunger variant of the LSDA exchange-correlation functional (`XC_FUNCTIONAL CAPZ`)
 and the spin-polarised option (`SPINPOLARIZED TRUE`). Also notice the input flag `DO_PROPERTIES TRUE`,
 which proceeds with the calculation of various electronic properties at the end of the single point
 energy calculation.
 
-Run the input, redirecting the output to a file such as `methyl.out`. We also provide a reference
-[:material-download:methyl.out](../files/methyl.out) file. The calculation should take a minute or two
-to run. Once it completes, you will notice that a number of `.cube` files have been created,
+Run the input, redirecting the output to a file such as `methyl.out` (we also provide a reference
+[:material-download:methyl.out](../files/methyl.out) file). 
+The calculation should take a minute or two to run. 
+
+
+### Visualisation [ionic positions]
+Once it completes, you will notice that a number of `.cube` files have been created,
 including the file [:material-download:methyl_spindensity.cube](../files/methyl_spindensity.cube).
-Let us examine this first. ONETEP can output volumetric data (such as spin densities, charge densities,
-potentials, etc.) in Gaussian `.cube` format (`CUBE_FORMAT TRUE`), Materials Studio `.grd` format
-(`GRD_FORMAT TRUE`) and OpenDX `.dx` format (`DX_FORMAT TRUE`). The `.cube` format has the
-advantage of having the ionic positions output in addition to the volumetric data. In this tutorial
-we will use the `.cube` format which can be viewed with a number of free molecular visualisation
+Let us examine this first. ONETEP can output volumetric data such as spin densities, charge densities,
+potentials, etc. There are three formats to choose from:
+
+- Gaussian `.cube` format (`CUBE_FORMAT TRUE`)
+- Materials Studio `.grd` format (`GRD_FORMAT TRUE`)
+- OpenDX `.dx` format (`DX_FORMAT TRUE`). 
+
+The `.cube` format has the advantage of having the ionic positions output in addition to the volumetric data. 
+In this tutorial we will use the `.cube` format which can be viewed with a number of free molecular visualisation
 programs. The instructions that follow are assuming that the VMD program can be used to visualize
 the files but in priciple you can use any other software that can display `.cube` files (such as
 VESTA, Molekel, gOpenMol, XCrySDens, etc).
 
 Start VMD by typing `vmd` in the terminal, use `File/New molecule/Browse` to find
-`methyl_spindensity.cube`,  then click on `Load` to load the molecule. You should
+`methyl_spindensity.cube`, then click on `Load` to load the molecule. You should
 be able to see a crude, line-based representation of the molecule in a separate window.
 You can now get rid of the `Molecule file browser` window. Choosing `Graphics/Representations...`
 opens another window which lets you control the look of your molecule. In this window,
@@ -103,6 +115,7 @@ where dragging with the mouse translates the molecule, instead of rotating it. T
    :target: _static/tutorial_5/T5_CH3_vmd.png -->
 
 
+### Visualisation [spin density]
 So far we've only looked at the nuclei in the system. Let's try some electronic properties,
 starting from the spin density which we have already loaded, but not visualized yet.
 A neat thing about VMD is that you can use several representations at once.
@@ -123,7 +136,7 @@ Experiment with the settings (`Coloring Method`, `Material`, `Isovalue`) to get 
 how they work. It makes sense to set `Coloring Method` to `ColorID` here, as this lets us
 to manually pick a colour for the isosurface (from the drop-down box near `ColorID`).
 After some adjustments you should obtain an isosurface similar to the one shown here.
-Do not worry if you cannot get the transparency right -- it's -- only possible when you render
+Do not worry if you cannot get the transparency right - it's only possible when you render
 "production quality" images, think of what you see as a draft.
 
 ![image-3](../files/T5_CH3_vmd2.png){ width=20%", .center }
@@ -143,6 +156,7 @@ It has positive as well as negative regions which is a consequence of the fact t
 the spatial parts of the Kohn-Sham orbitals for each spin are allowed to be different,
 even for doubly occupied states.
 
+### Visualisation [Kohn-Sham orbtials]
 The properties calculation also produces *Kohn-Sham orbitals*. Their energies for each
 spin are printed in the output file (try to find them, they are towards the very end,
 copy them into the table below) and `.cube` files for the squares of some of the
@@ -155,7 +169,7 @@ Similarly named files contain the orbitals just below the HOMO and just above th
 here, but generated during the calculation).
 
 ![image-4](../files/T5_CH3_table.png){ width=80%", .center }
-<figcaption>Fig.4: Fill this table with the data found in the calculation output.</figcaption>
+<figcaption>Table 1: Fill this table with the data found in the calculation output.</figcaption>
 
 <!-- .. _Figure fig:CH3_table:
 .. figure:: _static/tutorial_5/T5_CH3_table.png
@@ -166,17 +180,19 @@ here, but generated during the calculation).
    :target: _static/tutorial_5/T5_CH3_table.png -->
 
 
-Finally, let's try visualizing the local potential (sum of the ionic, Hartree (Coulomb) and XC potentials),
+### Visualisation [local potential]
+Finally, let's try visualizing the local potential [sum of the ionic, Hartree (Coulomb) and XC potentials] with a contour plot,
 which is written out to [:material-download:methyl_potential.cube](../files/methyl_potential.cube).
+
 Isosurface plots of potentials can be obtained similarly to the isosurface plots of densities.
-Let's also try to do a contour plot. This can be accomplished by choosing `VolumeSlice` for
+This can be accomplished by choosing `VolumeSlice` for
 `Drawing Method`. Try playing with `Slice Axis` and `Slice Offset` to get the hang of it.
 Admittedly, the quality of the contour plot is not too good, even if you set `Render Quality` to
 `High`. It is improved, however, when you create a production image. Try obtaining a
 composite CPK + isodensity + contour plot similar to the one shown here.
 
-![image-5](../files/T5_CH3_vmd3.png){ width=60%", .center }
-<figcaption>Fig.5: The local potential of the CH3 radical visualized in VMD.</figcaption>
+![image-5](../files/T5_CH3_vmd3.png){ width=30%", .center }
+<figcaption>Fig.4: The local potential of the CH3 radical visualized in VMD.</figcaption>
 <!-- .. _Figure fig:CH3_vmd3:
 .. figure:: _static/tutorial_5/T5_CH3_vmd3.png
    :alt: The local potential of the CH3 radical visualized in VMD.
@@ -186,12 +202,12 @@ composite CPK + isodensity + contour plot similar to the one shown here.
    :target: _static/tutorial_5/T5_CH3_vmd3.png -->
 
 
-## Visualizing NGWFs and NNHOs for C~2~SiH~6~
+## Visualising NGWFs and NNHOs for C~2~SiH~6~
 
 In this example we will perform two sets of calculations on the C$_2$SiH$_6$ molecule:
 
 ![image-6](../files/T5_C2SiH6.png){ width=25%", .center }
-<figcaption>Fig.6: The C2SiH6 molecule. Visualization in VMD.</figcaption>
+<figcaption>Fig.5: The C2SiH6 molecule. Visualization in VMD.</figcaption>
 
 <!-- .. _Figure fig:C2SiH6:
 .. figure:: _static/tutorial_5/T5_C2SiH6.png
@@ -201,31 +217,44 @@ In this example we will perform two sets of calculations on the C$_2$SiH$_6$ mol
    :align: center
    :target: _static/tutorial_5/T5_CH2SiH6.png -->
 
-The first calculation will use the input file [:material-download:C2SiH6_NGWF.dat](../files/C2SiH6_NGWF.dat),
-which has similar parameters (and, thus, keywords) to the previous example but also contains the
-`WRITE_NGWF_PLOT TRUE` keyword that allows output of selected NGWFs in the scalarfield formats we
+
+### Prepreation
+The ONETEP input for this calcualtion are:
+
+- Input file 1: [:material-download:C2SiH6_NGWF.dat](../files/C2SiH6_NGWF.dat)
+- Input file 2: [:material-download:C2SiH6_NNHO.dat](../files/C2SiH6_NNHO.dat)
+
+Compared to the previous input file, the first input file has similar parameters (and, thus, keywords).
+However it also contains the `WRITE_NGWF_PLOT TRUE` keyword that allows output of selected NGWFs in the scalarfield formats we
 discussed earlier (`.cube` by default). The NGWFs that will be outputted are selected by the
 `species_ngwf_plot` block in which the *species* of atoms whose NGWFs are to be outputted are
 listed. In this example we output NGWFs of the Si atom and of the first H and C atoms (as written
-in the input coordinates). The second input file is [:material-download:C2SiH6_NNHO.dat](../files/C2SiH6_NNHO.dat),
-which contains the additional keyword `NNHO TRUE` which instructs ONETEP to perform a same-centre rotation of the
+in the input coordinates). 
+
+The second input file contains the additional keyword `NNHO TRUE` which instructs ONETEP to perform a same-centre rotation of the
 NGWFs to transform them to non-orthogonal natural hybrid orbitals (NNHOs). These contain the
 same information as the NGWFs but are more "natural" as they conform with chemical concepts,
 such as being directed towards chemical bonds, and physical concepts, as in several of their
 properties they resemble proper Wannier functions. The mixing of NGWFs to NNHOs is done according to
-the procedure by Foster and Weinhold (J. P. Foster and F. Weinhold, *J. Am. Chem. Soc.* **102**, 7211 (1980)).
+the procedure by Foster and Weinhold [^3].
 For this calculation we will use the PBE GGA exchange-correlation functional (`XC_FUNCTIONAL PBE`).
 
+[^3]: J. P. Foster and F. Weinhold, *J. Am. Chem. Soc.* **102**, 7211 (1980).
+
+### Visualisation [NGWF and NNHO]
 Run the calculation to completion with the two inputs (in separate directories),
-it should take no more than five minutes for each of them. Reference outputs are provided here:
-[:material-download:C2SiH6_NGWF.out](../files/C2SiH6_NGWF.out) and here:
-[:material-download:C2SiH6_NNHO.out](../files/C2SiH6_NNHO.out).
+it should take no more than five minutes for each of them. 
+
+Reference outputs are:
+
+- output 1: [:material-download:C2SiH6_NGWF.out](../files/C2SiH6_NGWF.out)
+- output 2: [:material-download:C2SiH6_NNHO.out](../files/C2SiH6_NNHO.out)
 
 Examine some of the NGWF and NNHO output files. As an example, below we show plots of the
 third function (NGWF or NNHO) of atom 2 (one of the carbons). Try to obtain similar plots.
 
 ![image-7](../files/T5_C2SiH6_vmd.png){ width=100%", .center }
-<figcaption>Fig.7: A particular NGWF of the C2SiH6 molecule. Visualization in VMD.</figcaption>
+<figcaption>Fig.6: A particular NGWF of the C2SiH6 molecule. Visualization in VMD.</figcaption>
 
 <!-- .. _Figure fig:C2SiH6_vmd:
 .. figure:: _static/tutorial_5/T5_C2SiH6_vmd.png
@@ -248,7 +277,7 @@ You will see how much the NGWFs differ from the NNHOs. Of course all the other q
 Check this by completing the table below.
 
 ![image-8](../files/T5_C2SiH6_table.png){ width=90%", .center }
-<figcaption>Fig.8: Fill this table with the data found in the calculation output.</figcaption>
+<figcaption>Table.2: Fill this table with the data found in the calculation output.</figcaption>
 
 <!-- .. _Figure fig:C2SiH6_table:
 .. figure:: _static/tutorial_5/T5_C2SiH6_table.png
@@ -263,16 +292,16 @@ Finally, examine the atomic population in the output files (we have asked for it
 with their relative electronegativities.
 
 
-## A calculation on a nanostructure
+## Nanostructure
 
 Let us now see how to set up and visualize a calculation on a nanostructure whose size is in the
 region where conventional cubic scaling codes become very inefficient, while linear-scaling codes
 like ONETEP are still at the beginning of their capabilities. We will perform a calculation on
-the following "nano-peapod" structure, which consists of a C\ :sub:`70` fullerene
+the following "nano-peapod" structure, which consists of a C~70~ fullerene
 inside a single repeat-unit of a (10,8) carbon nanotube.
 
 ![image-9](../files/T5_C70_in_10-8.png){ width=50%", .center }
-<figcaption>Fig.9: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+<figcaption>Fig.7: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
 
 <!-- .. _Figure fig:C70_in_10-8:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8.png
@@ -283,12 +312,17 @@ inside a single repeat-unit of a (10,8) carbon nanotube.
    :target: _static/tutorial_5/T5_C70_in_10-8.png -->
 
 
+### Prepreation
 The (10,8) is a chiral nanotube with
 488 atoms in each repeat-unit, so the peapod input consists of 558 atoms, with no symmetry,
-in a unit cell of 20.0 x 20.0 x 33.27 (angstroem), which is equivalent to 37.795 x 37.795 x 62.874 (bohr).
-The ONETEP input is in the file
-[:material-download:C70_in_10-8.dat](../files/C70_in_10-8.dat). We impose a density kernel
-cut-off of 30.0 bohr (``KERNEL_CUTOFF 30.0 bohr``) in order to achieve linear-scaling behaviour.
+in a unit cell of 20.0 x 20.0 x 33.27 (angstroem), which is equivalent to 37.795 x 37.795 x 62.874 (Bohr).
+
+The ONETEP input can be downloaded:
+
+- Input: [:material-download:C70_in_10-8.dat](../files/C70_in_10-8.dat). 
+
+Note that in this input fiel, we impose a density kernel
+cut-off of 30.0 Bohr (``KERNEL_CUTOFF 30.0 Bohr``) in order to achieve linear-scaling behaviour.
 
 This calculation is best run on a parallel computer, but you can run it on a desktop machine
 where it should complete in about two-three hours. It took just under 8 minutes when run on
@@ -296,25 +330,26 @@ where it should complete in about two-three hours. It took just under 8 minutes 
 to wait or do not have the sufficient resources, here's the reference output:
 [:material-download:C70_in_10-8.out](../files/C70_in_10-8.out).
 
-Let us start by examining this file. At the beginning of the calculation the *filling*
+### Visualisation
+Let us start by examining the output file. At the beginning of the calculation the *filling*
 (the opposite of sparsity) of various matrices is reported. You will notice that the density
 kernel is not 100% full as a consequence of the cut-off that is imposed in the input.
 Information about the psinc grid sizes is also provided, including the actual plane-wave cut-off
 to which they correspond and the size of the FFT box. The calculation converges in 7 NGWF iterations,
 which is the point where the NGWF gradient threshold set in the input (`NGWF_THRESHOLD_ORIG 0.00003`)
 has been satisfied. Normally you'd likely use a tighter threshold for extra accuracy (the default
-is 2E-6).
+is `2E-6`).
 
 As before, a range of properties are calculated (`DO_PROPERTIES T`). As an example,
 you can examine the total potential (the sum of ionic, Hartree and exchange-correlation potentials)
 which is outputted to the file `C70_in_10-8_PROP_potential.cube`. We do not provide this file
-here due to size considerations. A contour plot on a plane containing the nanotube axis of the
+here due its size. A contour plot on a plane containing the nanotube axis of the
 potential will look similar to what you see below, which is compatible with the chiral
-nature of the nanotube and reveals also the asymmetric way in which the oblong C$_70$ is
+nature of the nanotube and reveals also the asymmetric way in which the oblong C~70~ is
 is located inside it.
 
 ![image-10](../files/T5_C70_in_10-8_vmd.png){ width=40%", .center }
-<figcaption>Fig.10: The local potential of the system under study. Visualization in VMD.</figcaption>
+<figcaption>Fig.8: The local potential of the system under study. Visualization in VMD.</figcaption>
 
 <!-- .. _Figure fig:C70_in_10-8_vmd:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8_vmd.png
@@ -337,7 +372,7 @@ to the one below.
 
 
 ![image-11](../files/T5_C70_in_10-8_vmd2.png){ width=50%", .center }
-<figcaption>Fig.11: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+<figcaption>Fig.9: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
 
 <!-- .. _Figure fig:C70_in_10-8_vmd2:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8_vmd2.png
@@ -348,4 +383,4 @@ to the one below.
    :target: _static/tutorial_5/T5_C70_in_10-8_vmd2.png -->
 
 
-This completes tutorial 5.
+This concludes tutorial 5.
