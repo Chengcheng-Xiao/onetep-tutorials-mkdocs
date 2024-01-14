@@ -35,11 +35,13 @@ conduction band is dominated by Fe d states. Hematite is generally considered
 to be a charge transfer rather than a Mott-Hubbard insulator [^Naveas2023]
 [^Huang2016] [^Si2020].
 
-<p align="center">
-<img src="../files/Fe4O6.png" width="15%">
-<img src="../files/Fe12O18.png" width="25%">
-</p>
-<figcaption>Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red.</figcaption>
+<figure markdown>
+  <p align="center">
+  <img src="../files/Fe4O6.png" width="15%">
+  <img src="../files/Fe12O18.png" width="25%">
+  </p>
+  <figcaption>Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red.</figcaption>
+</figure>
 <!-- |pic1| |pic2| -->
 
 <!-- .. |pic1| image:: _static/tutorial_9/Fe4O6.png -->
@@ -66,8 +68,10 @@ Out of all these states the last one ($+--+$) is the ground state, we would like
 Out of all these states the last one ($+--+$) is the ground state, we would like to be able to force our system to end up
 in the ground state.
 
-![image_3](../files/magnetism.png ){ width="15%", .center }
-<figcaption>Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration.</figcaption>
+<figure markdown>
+  ![image_3](../files/magnetism.png ){ width="15%", .center }
+  <figcaption>Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration.</figcaption>
+</figure>
 <!-- .. figure:: _static/tutorial_9/magnetism.png -->
    <!-- :align: center -->
    <!-- :scale: 40% -->
@@ -298,7 +302,9 @@ HOMO-LUMO gap:       0.072588336 Eh
 
 Next step is to plot the density of states. It will tell us the distribution of electrons and states in our system
 we would expect to have gap around 0 of about 2 eV as this is the band gap of the material.
-![image_4](../files/DOS.png){ width="45%", .center }
+<figure markdown>
+  ![image_4](../files/DOS.png){ width="45%", .center }
+</figure>
 <!-- <figcaption>Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration.</figcaption> -->
 <!-- .. figure:: _static/tutorial_9/DOS.png -->
    <!-- :align: center -->
@@ -307,10 +313,12 @@ we would expect to have gap around 0 of about 2 eV as this is the band gap of th
 We indeed obtain a gap between the states but it does not tell us much more. To obtain more information we will be plotting the local density of states (LDOS)
 and the partial density of states (PDOS).
 
-<p align="center">
-<img src="../files/LDOS.png" width="45%">
-<img src="../files/PDOS.png" width="45%">
-</p>
+<figure markdown>
+  <p align="center">
+  <img src="../files/LDOS.png" width="45%">
+  <img src="../files/PDOS.png" width="45%">
+  </p>
+</figure>
 <!-- <figcaption>Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red.</figcaption> -->
 
 
@@ -363,8 +371,10 @@ We would like to visualise it to know if we obtained the afm state we wanted, th
 
 You can directly open and visualise The .cube generated at the end of the calculations with VESTA, VMD or lots of other softwares.
 
-![image_5](../files/hematite_spindensity.png){ width="30%", .center}
-<figcaption>Fig.3: Hematite spin density, blu spheres refers to atom with up spin and yellow to down spin</figcaption>
+<figure markdown>
+  ![image_5](../files/hematite_spindensity.png){ width="30%", .center}
+  <figcaption>Fig.3: Hematite spin density, blu spheres refers to atom with up spin and yellow to down spin</figcaption>
+</figure>
 
 <!-- .. figure:: _static/tutorial_9/hematite_spindensity.png -->
    <!-- :align: center -->

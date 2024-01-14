@@ -317,8 +317,10 @@ for the positions to settle down according to relaxation criteria.
     | |F|max | 3.623343E-003 | 2.000000E-003 | Ha/Bohr | No | <-- BFGS
 ```
 
-![image-1](../files/sucrose.png){ width="40%", .center }
-<figcaption>Fig.1: Ball stick representation of the sucrose molecule.</figcaption>
+<figure markdown>
+  ![image-1](../files/sucrose.png){ width="40%", .center }
+  <figcaption>Fig.1: Ball stick representation of the sucrose molecule.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:T4_1: -->
 <!-- .. figure:: _static/tutorial_4/sucrose.png -->
@@ -340,8 +342,10 @@ As an example, we will investigate the adsorption of ammonia on a
 The carbon nanotube considered here contains 488 carbon atoms in its unit-cell
 and its chiral periodicity is of 62.87 Bohr.
 
-![image-1](../files/CNT_ammonia.png){ width="40%", .center }
-<figcaption>Fig.2: Ball-stick representation of the ammonia adsorbed on a CNT (10,8).</figcaption>
+<figure markdown>
+  ![image-1](../files/CNT_ammonia.png){ width="40%", .center }
+  <figcaption>Fig.2: Ball-stick representation of the ammonia adsorbed on a CNT (10,8).</figcaption>
+</figure>
 <!-- .. _Figure fig:T4_2: -->
 <!-- .. figure:: _static/tutorial_4/CNT_ammonia.png -->
 <!--    :alt: Ball-stick representation of the ammonia adsorbed on a CNT (10,8) -->

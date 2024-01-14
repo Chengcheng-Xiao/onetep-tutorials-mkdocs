@@ -21,8 +21,10 @@ This tutorial demonstrates how to:
 
 In this part we will perform a calculation on the CH$_3$ radical:
 
-![image-1](../files/T5_CH3.png){ width="20%", .center }
-<figcaption>Fig.1: The CH3 radical. Visualization in VM.</figcaption>
+<figure markdown>
+  ![image-1](../files/T5_CH3.png){ width="20%", .center }
+  <figcaption>Fig.1: The CH3 radical. Visualization in VM.</figcaption>
+</figure>
 <!-- .. _Figure fig:CH3:
 .. figure:: _static/tutorial_5/T5_CH3.png
    :alt: The CH3 radical. Visualization in VMD.
@@ -103,8 +105,10 @@ where dragging with the mouse translates the molecule, instead of rotating it. T
 `Scale Mode` might be of use. You should be able to obtain a representation similar to the one shown here.
 
 
-![image-2](../files/T5_CH3_vmd.png){ width=20%", .center }
-<figcaption>Fig.2: The CH3 radical visualized in VMD with a ball-and-stick representation.</figcaption>
+<figure markdown>
+  ![image-2](../files/T5_CH3_vmd.png){ width=20%", .center }
+  <figcaption>Fig.2: The CH3 radical visualized in VMD with a ball-and-stick representation.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:CH3_vmd:
 .. figure:: _static/tutorial_5/T5_CH3_vmd.png
@@ -139,8 +143,10 @@ After some adjustments you should obtain an isosurface similar to the one shown 
 Do not worry if you cannot get the transparency right - it's only possible when you render
 "production quality" images, think of what you see as a draft.
 
-![image-3](../files/T5_CH3_vmd2.png){ width=20%", .center }
-<figcaption>Fig.3: The spin density of the CH3 radical visualized in VMD.</figcaption>
+<figure markdown>
+  ![image-3](../files/T5_CH3_vmd2.png){ width=20%", .center }
+  <figcaption>Fig.3: The spin density of the CH3 radical visualized in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:CH3_vmd2:
 .. figure:: _static/tutorial_5/T5_CH3_vmd2.png
@@ -168,8 +174,10 @@ their LUMO counterparts to [:material-download:methyl_LUMO_DN.cube](../files/met
 Similarly named files contain the orbitals just below the HOMO and just above the LUMO (not provided
 here, but generated during the calculation).
 
-![image-4](../files/T5_CH3_table.png){ width=80%", .center }
-<figcaption>Table 1: Fill this table with the data found in the calculation output.</figcaption>
+<figure markdown>
+  ![image-4](../files/T5_CH3_table.png){ width=80%", .center }
+  <figcaption>Table 1: Fill this table with the data found in the calculation output.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:CH3_table:
 .. figure:: _static/tutorial_5/T5_CH3_table.png
@@ -191,8 +199,11 @@ Admittedly, the quality of the contour plot is not too good, even if you set `Re
 `High`. It is improved, however, when you create a production image. Try obtaining a
 composite CPK + isodensity + contour plot similar to the one shown here.
 
-![image-5](../files/T5_CH3_vmd3.png){ width=30%", .center }
-<figcaption>Fig.4: The local potential of the CH3 radical visualized in VMD.</figcaption>
+<figure markdown>
+  ![image-5](../files/T5_CH3_vmd3.png){ width=30%", .center }
+  <figcaption>Fig.4: The local potential of the CH3 radical visualized in VMD.</figcaption>
+</figure>
+
 <!-- .. _Figure fig:CH3_vmd3:
 .. figure:: _static/tutorial_5/T5_CH3_vmd3.png
    :alt: The local potential of the CH3 radical visualized in VMD.
@@ -206,8 +217,10 @@ composite CPK + isodensity + contour plot similar to the one shown here.
 
 In this example we will perform two sets of calculations on the C$_2$SiH$_6$ molecule:
 
-![image-6](../files/T5_C2SiH6.png){ width=25%", .center }
-<figcaption>Fig.5: The C2SiH6 molecule. Visualization in VMD.</figcaption>
+<figure markdown>
+  ![image-6](../files/T5_C2SiH6.png){ width=25%", .center }
+  <figcaption>Fig.5: The C2SiH6 molecule. Visualization in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C2SiH6:
 .. figure:: _static/tutorial_5/T5_C2SiH6.png
@@ -253,8 +266,10 @@ Reference outputs are:
 Examine some of the NGWF and NNHO output files. As an example, below we show plots of the
 third function (NGWF or NNHO) of atom 2 (one of the carbons). Try to obtain similar plots.
 
-![image-7](../files/T5_C2SiH6_vmd.png){ width=100%", .center }
-<figcaption>Fig.6: A particular NGWF of the C2SiH6 molecule. Visualization in VMD.</figcaption>
+<figure markdown>
+  ![image-7](../files/T5_C2SiH6_vmd.png){ width=100%", .center }
+  <figcaption>Fig.6: A particular NGWF of the C2SiH6 molecule. Visualization in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C2SiH6_vmd:
 .. figure:: _static/tutorial_5/T5_C2SiH6_vmd.png
@@ -276,8 +291,10 @@ You will see how much the NGWFs differ from the NNHOs. Of course all the other q
 (energies, Kohn-Sham orbitals, orbital energies, etc.) are independent of whether you use NGWFs or NNHOs.
 Check this by completing the table below.
 
-![image-8](../files/T5_C2SiH6_table.png){ width=90%", .center }
-<figcaption>Table.2: Fill this table with the data found in the calculation output.</figcaption>
+<figure markdown>
+  ![image-8](../files/T5_C2SiH6_table.png){ width=90%", .center }
+  <figcaption>Table.2: Fill this table with the data found in the calculation output.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C2SiH6_table:
 .. figure:: _static/tutorial_5/T5_C2SiH6_table.png
@@ -300,8 +317,10 @@ like ONETEP are still at the beginning of their capabilities. We will perform a 
 the following "nano-peapod" structure, which consists of a C~70~ fullerene
 inside a single repeat-unit of a (10,8) carbon nanotube.
 
-![image-9](../files/T5_C70_in_10-8.png){ width=50%", .center }
-<figcaption>Fig.7: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+<figure markdown>
+  ![image-9](../files/T5_C70_in_10-8.png){ width=50%", .center }
+  <figcaption>Fig.7: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C70_in_10-8:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8.png
@@ -348,8 +367,10 @@ potential will look similar to what you see below, which is compatible with the 
 nature of the nanotube and reveals also the asymmetric way in which the oblong C~70~ is
 is located inside it.
 
-![image-10](../files/T5_C70_in_10-8_vmd.png){ width=40%", .center }
-<figcaption>Fig.8: The local potential of the system under study. Visualization in VMD.</figcaption>
+<figure markdown>
+  ![image-10](../files/T5_C70_in_10-8_vmd.png){ width=40%", .center }
+  <figcaption>Fig.8: The local potential of the system under study. Visualization in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C70_in_10-8_vmd:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8_vmd.png
@@ -370,9 +391,10 @@ If you are in an ambitious mood, try creating a fancy plot showing the structure
 nano-peapod system with its HOMO and LUMO orbitals and a contour plot of the potential, similar
 to the one below.
 
-
-![image-11](../files/T5_C70_in_10-8_vmd2.png){ width=50%", .center }
-<figcaption>Fig.9: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+<figure markdown>
+  ![image-11](../files/T5_C70_in_10-8_vmd2.png){ width=50%", .center }
+  <figcaption>Fig.9: The local potential, and the HOMO and LUMO orbitals of the system under study. Visualization in VMD.</figcaption>
+</figure>
 
 <!-- .. _Figure fig:C70_in_10-8_vmd2:
 .. figure:: _static/tutorial_5/T5_C70_in_10-8_vmd2.png
