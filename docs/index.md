@@ -1,5 +1,9 @@
 # Welcome to ONETEP's Tutorials!
 
+This is a privately maintained repository of tutorials of ONETEP.
+The aim of this repository is to make the tutorial easier to read by including
+additional tutorials and using mkdocs.
+
 <!-- For full documentation visit [mkdocs.org](https://www.mkdocs.org). -->
 
 ## Contents:
