@@ -4,7 +4,7 @@ site_author: ONETEP collective
 site_description: Tutorials for ONTEP.
 
 # Copyright
-copyright: Copyright &copy; 2023 ONETEP Collective
+copyright: Copyright &copy; 2024 ONETEP Collective
 
 # Repository
 # repo_name: onetep-devel/tutorials
@@ -63,8 +63,10 @@ markdown_extensions:
   - admonition
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      # emoji_index: !!python/name:materialx.emoji.twemoji
+      # emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
@@ -93,6 +95,11 @@ markdown_extensions:
   - md_in_html
   - pymdownx.superfences
 
+
+validation:
+  omitted_files: warn
+  not_found: ignore
+
 # plugins:
 #     - with-pdf
 
@@ -100,6 +107,7 @@ nav:
   - Introduction: index.md
   - Tutorials:
     - Tutorial 1: tutorials/tutorial_1/tutorial.md
+    - Tutorial 4: tutorials/tutorial_4/tutorial.md
     - Tutorial 5: tutorials/tutorial_5/tutorial.md
     - Tutorial 9: tutorials/tutorial_9/tutorial.md
 
