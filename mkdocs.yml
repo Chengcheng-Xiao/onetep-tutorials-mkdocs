@@ -16,6 +16,11 @@ edit_uri: ""
 
 
 extra_javascript:
+  # mathjax
+  - javascripts/mathjax.js
+  - javascripts/mkdocs_exporter.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
+  # katex
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
@@ -23,6 +28,7 @@ extra_javascript:
 
 extra_css:
   - stylesheets/extra.css
+  # katex
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 # Configuration
@@ -102,6 +108,32 @@ validation:
 
 # plugins:
 #     - with-pdf
+plugins:
+  - exporter
+  - exporter-pdf:
+      enabled: true
+      stylesheets:
+        - docs/assets/pdf/pdf.scss
+      covers:
+        front: docs/assets/pdf/front.html.j2
+        back: docs/assets/pdf/back.html.j2
+      browser:
+        debug: false
+        headless: true
+  - exporter-extras:
+      buttons:
+        - title: Download as PDF
+          icon: material-file-download-outline
+          enabled: !!python/name:mkdocs_exporter.plugins.pdf.button.enabled
+          attributes:
+            href: !!python/name:mkdocs_exporter.plugins.pdf.button.href
+            download: !!python/name:mkdocs_exporter.plugins.pdf.button.download
+  # - exporter-pdf:
+  #     stylesheets:
+  #       - docs/assets/pdf/pdf.scss
+  #     covers:
+  #       front: docs/assets/pdf/front.html.j2
+  #       back: docs/assets/pdf/back.html.j2
 
 nav:
   - Introduction: index.md
