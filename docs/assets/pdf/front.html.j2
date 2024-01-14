@@ -1,7 +1,7 @@
 <style data-teleport="head">
   .front-cover {
-    margin: var(--margin);
-    height: calc(var(--height) - var(--offset));
+    margin: 0;
+    height: calc(var(--height) - var(calc(var(--margin) * 3)));
     page-break-after: always;
     border: 1px solid #fff;
     position: relative;
@@ -81,17 +81,60 @@
   }
 </style>
 <div class="front-cover">
-  <img src="/assets/pdf/background.png">
+  <!--<img src="/assets/pdf/background.png">-->
   <div class="logo">
     <div>
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="m23 19-3-3v2h-4v2h4v2l3-3m-10 0c0-.3 0-.7.1-1H6v-2h7.8c.5-.8 1.1-1.5 1.9-2H6v-2h12v1.1c.3-.1.7-.1 1-.1s.7 0 1 .1V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h7.8c-.5-.9-.8-1.9-.8-3m0-15.5L18.5 9H13V3.5Z"></path>
+      <svg
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:cc="http://creativecommons.org/ns#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns="http://www.w3.org/2000/svg"
+         width="37.67857"
+         height="48.000011"
+         viewBox="0 0 37.67857 48.000011"
+         fill="none"
+         version="1.1"
+         id="svg20">
+        <metadata
+           id="metadata26">
+          <rdf:RDF>
+            <cc:Work
+               rdf:about="">
+              <dc:format>image/svg+xml</dc:format>
+              <dc:type
+                 rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+              <dc:title></dc:title>
+            </cc:Work>
+          </rdf:RDF>
+        </metadata>
+        <defs
+           id="defs24" />
+        <circle
+           cx="18.999969"
+           cy="24.00001"
+           r="16.5"
+           stroke="#ffffff"
+           stroke-width="3"
+           id="circle12" />
+        <path
+           d="m 12.67857,12.50001 h 3.9999 L 4,48.00001 H 0 Z"
+           fill="#ffffff"
+           id="path14" />
+        <path
+           d="m 34.17857,1e-5 3.5,-1e-5 -12.6786,35.50001 h -4 z"
+           fill="#ffffff"
+           id="path16" />
+        <path
+           d="m 20.99997,35.50001 h 4 l -8.3215,-23 h -3.9999 z"
+           fill="#ffffff"
+           id="path18" />
       </svg>
     </div>
   </div>
   <section>
     <div class="brand">{{ config.site_name }}</div>
-    <div class="version">{{ version }}</div>
+    <div class="version">{{ config.version }}</div>
     <div class="title">{{ page.title }}</div>
   </section>
 </div>

@@ -1,5 +1,6 @@
 site_name: ONETEP Tutorials
 site_author: ONETEP collective
+version: 7.0.0
 # site_url: https://friendly-broccoli-22e4d939.pages.github.io/
 site_description: Tutorials for ONTEP.
 
@@ -128,12 +129,9 @@ plugins:
           attributes:
             href: !!python/name:mkdocs_exporter.plugins.pdf.button.href
             download: !!python/name:mkdocs_exporter.plugins.pdf.button.download
-  # - exporter-pdf:
-  #     stylesheets:
-  #       - docs/assets/pdf/pdf.scss
-  #     covers:
-  #       front: docs/assets/pdf/front.html.j2
-  #       back: docs/assets/pdf/back.html.j2
+  - search
+  #   lang: en
+  - macros
 
 nav:
   - Introduction: index.md
