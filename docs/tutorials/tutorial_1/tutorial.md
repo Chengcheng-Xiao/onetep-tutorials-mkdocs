@@ -1,4 +1,4 @@
-# Tutorial 1: Setting up Simple ONETEP Calculations
+# Tutorial 1: Simple ONETEP Calculations
 :octicons-versions-24: Version: all versions
 :material-pen: [Nicholas D.M. Hine](mailto:N.D.M.Hine@warwick.ac.uk);
 [Chris-Kriton Skylaris](mailto:c.skylaris@soton.ac.uk)
@@ -83,7 +83,7 @@ lattice_cart` and `%endblock lattice_cart` keywords.
 
 Second, the atomic species need to be specified, in this case silicon
 and hydrogen.
-This information needs to be provided between %block species and
+This information needs to be provided between `%block species` and
 `%endblock species` keywords.
 In this block, we need to specify five pieces of information per
 species, separated by spaces (click on the `+` button to see the meaning
@@ -133,7 +133,7 @@ species as defined in the species block. The coordinates are assumed
 to be given in Bohr unless specified otherwise. While it is not
 requirement in ONETEP that all the atoms should lie within the
 simulation cell, it is best (for visualisation purposes) to start by
-placing the silicon atom at the centre of the cell. For SiH$_4$, we can write:
+placing the silicon atom at the centre of the cell. For SiH~4~, we can write:
 ```fortran
 %block positions_abs
 Si 20.0000 20.0000 20.0000
@@ -151,46 +151,59 @@ b = p 1/3.
 For example, the vector for the first Si-H bond is (2.2535, 1.5935,
 0.0000) Bohr. Add these offsets to the position of your silicon atom
 to create the SiH$_4$ molecule. -->
+<figure markdown>
+  ![image-1](../files/SiH4.png){ width="40%", .center }
+  <figcaption>Fig.1: structure of a SiH<sub>4</sub> molecule.</figcaption>
+</figure>
 
-<!-- loading local scripts -->
-<script type="text/javascript" src="../../../javascripts/jmol/jsmol/JSmol.min.js"></script>
-<script type="text/javascript" src="../../../javascripts/jmol/jsmol/js/Jmol2.js"></script>
-<script type="text/javascript"> jmolInitialize("../../../javascripts/jmol/jsmol");</script>
-<!-- loading external scripts (only works with public repo) -->
-<!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script> -->
-<!-- <script src="https://chemapps.stolaf.edu/jmol/jsmol/js/Jmol2.js"></script> -->
-<!-- <script> jmolInitialize("https://chemapps.stolaf.edu/jmol/jsmol/jsmol");</script> -->
 
-<!-- create div and autoadjust hight and width -->
-<div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center">
-<script type="text/javascript">
-var offsetHeight = document.getElementById('vis').offsetHeight;
-var offsetWidth  = document.getElementById('vis').offsetWidth;
-jmolApplet([offsetWidth-2,offsetHeight-2], "load ../files/SiH4.vasp {1 1 1}; set frank off; set displayCellParameters off; set background white")
-</script>
-</div>
-
-<!-- using remote JSmol -->
+<!-- ------------------------------------------------------------------------------- -->
+<!-- This section contain html5 codes for interactive visualization of crystal -->
+<!-- structures and molecular geometries. -->
+<!-- ------------------------------------------------------------------------------- -->
+<!--  -->
+<!-- [> loading local scripts <] -->
+<!-- <script type="text/javascript" src="../../../javascripts/jmol/jsmol/JSmol.min.js"></script> -->
+<!-- <script type="text/javascript" src="../../../javascripts/jmol/jsmol/js/Jmol2.js"></script> -->
+<!-- <script type="text/javascript"> jmolInitialize("../../../javascripts/jmol/jsmol");</script> -->
+<!-- [> loading external scripts (only works with public repo) <] -->
+<!-- [> <script src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script> <] -->
+<!-- [> <script src="https://chemapps.stolaf.edu/jmol/jsmol/js/Jmol2.js"></script> <] -->
+<!-- [> <script> jmolInitialize("https://chemapps.stolaf.edu/jmol/jsmol/jsmol");</script> <] -->
+<!--  -->
+<!-- [> create div and autoadjust hight and width <] -->
 <!-- <div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center"> -->
-<!-- <script> -->
+<!-- <script type="text/javascript"> -->
 <!-- var offsetHeight = document.getElementById('vis').offsetHeight; -->
 <!-- var offsetWidth  = document.getElementById('vis').offsetWidth; -->
-<!-- var Info = { -->
-<!-- height: offsetHeight-2, -->
-<!-- width: offsetWidth-2, -->
-<!-- isSigned: false, -->
-<!-- j2sPath: "https://chemapps.stolaf.edu/jmol/jsmol/j2s", -->
-<!-- serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php", -->
-<!-- use: "HTML5"}; -->
-<!-- jmolApplet = Jmol.getApplet("jmol",Info) -->
-<!-- Jmol.script(jmolApplet, -->
-<!--   "load ../files/SiH4.vasp {1 1 1}; \ -->
-<!--   set frank off; \ -->
-<!--   set displayCellParameters off; \ -->
-<!--   set background white; \ -->
-<!--   set platformSpeed = 2","0") -->
+<!-- jmolApplet([offsetWidth-2,offsetHeight-2], "load ../files/SiH4.vasp {1 1 1}; set frank off; set displayCellParameters off; set background white") -->
 <!-- </script> -->
 <!-- </div> -->
+<!--  -->
+<!-- ------------------------------------------------------------------------------- -->
+<!--  -->
+<!-- [> using remote JSmol <] -->
+<!-- [> <div id="vis" style="z-index:0; position:relative; width:80%; height:302px; margin:0 auto; float:center; overflow:auto; border:2px solid rgba(172, 174, 176,5);border-radius: 10px; align: center"> <] -->
+<!-- [> <script> <] -->
+<!-- [> var offsetHeight = document.getElementById('vis').offsetHeight; <] -->
+<!-- [> var offsetWidth  = document.getElementById('vis').offsetWidth; <] -->
+<!-- [> var Info = { <] -->
+<!-- [> height: offsetHeight-2, <] -->
+<!-- [> width: offsetWidth-2, <] -->
+<!-- [> isSigned: false, <] -->
+<!-- [> j2sPath: "https://chemapps.stolaf.edu/jmol/jsmol/j2s", <] -->
+<!-- [> serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php", <] -->
+<!-- [> use: "HTML5"}; <] -->
+<!-- [> jmolApplet = Jmol.getApplet("jmol",Info) <] -->
+<!-- [> Jmol.script(jmolApplet, <] -->
+<!-- [>   "load ../files/SiH4.vasp {1 1 1}; \ <] -->
+<!-- [>   set frank off; \ <] -->
+<!-- [>   set displayCellParameters off; \ <] -->
+<!-- [>   set background white; \ <] -->
+<!-- [>   set platformSpeed = 2","0") <] -->
+<!-- [> </script> <] -->
+<!-- [> </div> <] -->
+<!-- ------------------------------------------------------------------------------- -->
 
 
 The last essential parameter to specify is the kinetic energy cutoff

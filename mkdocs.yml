@@ -50,7 +50,7 @@ theme:
     # - navigation.sections
     # - navigation.top
     #- navigation.expand
-  custom_dir: overrides
+  # custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
   features:
