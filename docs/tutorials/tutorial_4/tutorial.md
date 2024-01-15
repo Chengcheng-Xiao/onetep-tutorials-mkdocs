@@ -1,6 +1,6 @@
 # Tutorial 4: Geometry optimization
 :octicons-versions-24: Version: all versions
-:material-pen: [Simon M.-M. Dubois](mailto:N.D.M.Hine@warwick.ac.uk);
+:material-pen: [Simon M.-M. Dubois](mailto:);
  <!-- · :octicons-tag-16: Post-processing | DFT -->
 
 ## Introduction
