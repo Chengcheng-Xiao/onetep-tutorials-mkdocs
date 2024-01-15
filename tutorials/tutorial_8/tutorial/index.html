@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tutorials for ONTEP." name="description"/>
+<meta content="ONETEP collective" name="author"/>
+<link href="../../tutorial_6/tutorial/" rel="prev"/>
+<link href="../../tutorial_9/tutorial/" rel="next"/>
+<link href="../../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.4" name="generator"/>
+<title>Tutorial 8 - ONETEP Tutorials</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="light" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tutorial-8-implicit-solvation-visualisation-and-properties-protein-ligand-free-energy-of-binding-for-the-t4-lysozyme">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ONETEP Tutorials" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ONETEP Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tutorial 8
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="light" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="dark" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ONETEP Tutorials" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+    ONETEP Tutorials
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_1/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_4/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 4
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_5/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 5
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_6/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 6
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Tutorial 8
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Tutorial 8
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#protein-ligand-free-energies-of-binding">
+<span class="md-ellipsis">
+      Protein-Ligand Free Energies of Binding
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quantum-mechanics-in-binding-free-energies">
+<span class="md-ellipsis">
+      Quantum Mechanics in Binding Free Energies
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linear-scaling-density-functional-theory">
+<span class="md-ellipsis">
+      Linear Scaling Density Functional Theory
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#t4-lysozyme">
+<span class="md-ellipsis">
+      T4 Lysozyme
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qm-pbsa-binding-free-energies">
+<span class="md-ellipsis">
+      QM-PBSA Binding Free Energies
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+<nav aria-label="Setting up the calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-input-files">
+<span class="md-ellipsis">
+      The input files
+    </span>
+</a>
+<nav aria-label="The input files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dat-file">
+<span class="md-ellipsis">
+      .dat file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#header-file">
+<span class="md-ellipsis">
+      .header file
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#submission-scripts">
+<span class="md-ellipsis">
+      Submission Scripts
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#evaluating-the-outputs">
+<span class="md-ellipsis">
+      Evaluating the Outputs
+    </span>
+</a>
+<nav aria-label="Evaluating the Outputs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cavity-correction">
+<span class="md-ellipsis">
+      Cavity Correction
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#properties">
+<span class="md-ellipsis">
+      Properties
+    </span>
+</a>
+<nav aria-label="Properties" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-charges">
+<span class="md-ellipsis">
+      Atomic charges
+    </span>
+</a>
+<nav aria-label="Atomic charges" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mulliken-population-analysis">
+<span class="md-ellipsis">
+      Mulliken population analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#natural-population-analysis">
+<span class="md-ellipsis">
+      Natural Population Analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#density-derived-electrostatic-and-chemical-ddec-analysis">
+<span class="md-ellipsis">
+      Density-Derived Electrostatic and Chemical (DDEC) analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-mulliken-npa-and-ddec-charges">
+<span class="md-ellipsis">
+      Comparison of Mulliken, NPA and DDEC charges
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_9/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 9
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_10/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 10
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_11/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 11
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_12/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 12
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_13/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 13
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_14/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 14
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#protein-ligand-free-energies-of-binding">
+<span class="md-ellipsis">
+      Protein-Ligand Free Energies of Binding
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quantum-mechanics-in-binding-free-energies">
+<span class="md-ellipsis">
+      Quantum Mechanics in Binding Free Energies
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linear-scaling-density-functional-theory">
+<span class="md-ellipsis">
+      Linear Scaling Density Functional Theory
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#t4-lysozyme">
+<span class="md-ellipsis">
+      T4 Lysozyme
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#qm-pbsa-binding-free-energies">
+<span class="md-ellipsis">
+      QM-PBSA Binding Free Energies
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+<nav aria-label="Setting up the calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-input-files">
+<span class="md-ellipsis">
+      The input files
+    </span>
+</a>
+<nav aria-label="The input files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dat-file">
+<span class="md-ellipsis">
+      .dat file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#header-file">
+<span class="md-ellipsis">
+      .header file
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#submission-scripts">
+<span class="md-ellipsis">
+      Submission Scripts
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#evaluating-the-outputs">
+<span class="md-ellipsis">
+      Evaluating the Outputs
+    </span>
+</a>
+<nav aria-label="Evaluating the Outputs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cavity-correction">
+<span class="md-ellipsis">
+      Cavity Correction
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#properties">
+<span class="md-ellipsis">
+      Properties
+    </span>
+</a>
+<nav aria-label="Properties" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#atomic-charges">
+<span class="md-ellipsis">
+      Atomic charges
+    </span>
+</a>
+<nav aria-label="Atomic charges" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mulliken-population-analysis">
+<span class="md-ellipsis">
+      Mulliken population analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#natural-population-analysis">
+<span class="md-ellipsis">
+      Natural Population Analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#density-derived-electrostatic-and-chemical-ddec-analysis">
+<span class="md-ellipsis">
+      Density-Derived Electrostatic and Chemical (DDEC) analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparison-of-mulliken-npa-and-ddec-charges">
+<span class="md-ellipsis">
+      Comparison of Mulliken, NPA and DDEC charges
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="Tutorial 8.pdf" href="index.pdf" title="Download as PDF"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14 2 6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8m4 18V9h-5V4H6v16h12m-6-1-4-4h2.5v-3h3v3H16l-4 4Z"></path></svg></a>
+
+<h1 id="tutorial-8-implicit-solvation-visualisation-and-properties-protein-ligand-free-energy-of-binding-for-the-t4-lysozyme">Tutorial 8: Implicit solvation, visualisation and properties: Protein-ligand free energy of binding for the T4 lysozyme<a class="headerlink" href="#tutorial-8-implicit-solvation-visualisation-and-properties-protein-ligand-free-energy-of-binding-for-the-t4-lysozyme" title="Permanent link">¶</a></h1>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2Zm-.5-2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H10a.5.5 0 0 0-.5.5ZM6.17 4.165a.75.75 0 0 1-.335 1.006c-.228.114-.295.177-.315.201a.035.035 0 0 0-.008.016.423.423 0 0 0-.012.112v13c0 .07.008.102.012.112a.03.03 0 0 0 .008.016c.02.024.087.087.315.201a.749.749 0 1 1-.67 1.342c-.272-.136-.58-.315-.81-.598C4.1 19.259 4 18.893 4 18.5v-13c0-.393.1-.759.355-1.073.23-.283.538-.462.81-.598a.75.75 0 0 1 1.006.336ZM2.15 5.624a.75.75 0 0 1-.274 1.025c-.15.087-.257.17-.32.245C1.5 6.96 1.5 6.99 1.5 7v10c0 .01 0 .04.056.106.063.074.17.158.32.245a.75.75 0 0 1-.752 1.298C.73 18.421 0 17.907 0 17V7c0-.907.73-1.42 1.124-1.65a.75.75 0 0 1 1.025.274Z"></path></svg></span> Version: all versions
+<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"></path></svg></span> <a href="mailto:">Lennart Gundelach</a>; <a href="mailto:">Jacek Dziedzic</a>
+<!-- · :octicons-tag-16: Post-processing | DFT -->
+</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<h3 id="protein-ligand-free-energies-of-binding">Protein-Ligand Free Energies of Binding<a class="headerlink" href="#protein-ligand-free-energies-of-binding" title="Permanent link">¶</a></h3>
+<p>The binding free energy is a measure of the affinity of the process by
+which two molecules form a complex by non-covalent association. An
+example of this, of central importance in biology, is the binding of a
+ligand to a protein. Many methods to computationally approximate the
+binding free energies of protein-ligand interactions have been proposed
+with the ultimate goal of computationally predicting small molecule drug
+candidates which bind strongly to the protein of interest.</p>
+<h3 id="quantum-mechanics-in-binding-free-energies">Quantum Mechanics in Binding Free Energies<a class="headerlink" href="#quantum-mechanics-in-binding-free-energies" title="Permanent link">¶</a></h3>
+<p>A key limitation common to most computational methods of estimating
+binding free energies is the assumption of the validity of classical
+mechanics. The atoms and electrons that constitute biological molecules,
+like proteins, are, however, governed by the laws of quantum mechanics.
+Charge transfer, polarization and non-local interactions are not
+captured by traditional classical mechanical force-fields. Thus, a true
+description of protein-ligand binding requires a quantum mechanical (QM)
+treatment of the problem. In theory, a full, <em>ab-initio</em> QM approach
+would be system-independent, parameter-free and would describe the full
+spectrum of physical phenomena at work.</p>
+<p>Unfortunately, high-level QM methods like coupled-cluster (CC) are
+prohibitively expensive and often have cubic or worse scaling with
+system size. Thus, even the ligands alone are often too large for
+routine calculations with these methods.</p>
+<h3 id="linear-scaling-density-functional-theory">Linear Scaling Density Functional Theory<a class="headerlink" href="#linear-scaling-density-functional-theory" title="Permanent link">¶</a></h3>
+<p>Due to the cubic scaling of conventional density functional theory,
+full-protein calculations on many thousands of atoms are not feasible.
+To study larger systems, linear-scaling versions of DFT have been
+developed <sup id="fnref:Bowler2012"><a class="footnote-ref" href="#fn:Bowler2012">1</a></sup>. The ONETEP
+code <sup id="fnref:Prentice2020_T8"><a class="footnote-ref" href="#fn:Prentice2020_T8">7</a></sup> is one such linear-scaling DFT
+implementation, exploiting hybrid MPI-OMP
+parallelism <sup id="fnref:Wilkinson2014"><a class="footnote-ref" href="#fn:Wilkinson2014">8</a></sup> for efficient and scalable
+calculations. The unique characteristic of ONETEP is that even though it
+is linear-scaling, it is able to retain large basis set accuracy as in
+conventional cubic-scaling DFT calculations. The implicit solvation
+model is a minimal-parameter Poisson-Boltzmann (PB) based model which is
+implemented self-consistently as part of the DFT
+calculation <sup id="fnref:Dziedzic2011"><a class="footnote-ref" href="#fn:Dziedzic2011">2</a></sup> <sup id="fnref:Womack2018"><a class="footnote-ref" href="#fn:Womack2018">9</a></sup> and uses the
+smeared-ion formalism and electron-density iso-surfaces to construct
+solute cavities.</p>
+<h3 id="t4-lysozyme">T4 Lysozyme<a class="headerlink" href="#t4-lysozyme" title="Permanent link">¶</a></h3>
+<p>The protein under investigation in this tutorial is a double mutant of
+the T4 lysozyme (L99A/M102Q). This protein has been artificially mutated
+to form a buried polar binding site and has served as a model or
+benchmark system for various protein-ligand binding free energy
+studies <sup id="fnref:Mobley2017"><a class="footnote-ref" href="#fn:Mobley2017">6</a></sup>. Although this protein is not
+directly pharmaceutically relevant, it is a useful model system due to
+it its relatively small size (2500 atoms), structural rigidity and
+well-defined, buried binding site, which can accommodate a wide variety
+of ligands. Fig.1 shows the ligand catechol inside the
+buried binding site of the T4 lysozyme L99A/M102Q mutant. PDB files of
+the complex, host and ligand are provided as part of this tutorial for
+you to visualize the system. The picture shown uses the <code>NewCartoon</code>
+representation for the protein with coloring based on secondary
+structure and <code>CPK</code> (ball-and-stick) for the ligand with element based
+coloring.</p>
+<figure>
+<p><img _="," alt="image-1" class="center" src="../files/T8_T4-Catechol.jpeg" width="40%"/>
+</p>
+<figcaption>Fig.1 Catechol bound in the buried binding site of the T4 lysozyme L99A/M102Q double mutant. Visualization in VMD.</figcaption>
+</figure>
+<!-- .. _Figure fig:T4: -->
+<!-- .. figure:: _static/tutorial_8/T8_T4-Catechol.jpeg -->
+<!--    :alt: Catechol bound in the buried binding site of the T4 lysozyme L99A/M102Q double mutant. Visualization in VMD. -->
+<!--    :name: fig:T4 -->
+<!--    :width: 95.0% -->
+<!--    :target: _static/tutorial_8/T8_T4-Catechol.jpeg -->
+<!-- -->
+<!--    Catechol bound in the buried binding site of the T4 lysozyme -->
+<!--    L99A/M102Q double mutant. Visualization in VMD. -->
+<h3 id="qm-pbsa-binding-free-energies">QM-PBSA Binding Free Energies<a class="headerlink" href="#qm-pbsa-binding-free-energies" title="Permanent link">¶</a></h3>
+<p>In this tutorial we will calculate the binding free energy of catechol
+to the T4 lysozyme L99A/M102Q mutant. We will employ a simplified
+QM-PBSA approach <sup id="fnref:Fox2014"><a class="footnote-ref" href="#fn:Fox2014">3</a></sup> <sup id="fnref:Gundelach2021"><a class="footnote-ref" href="#fn:Gundelach2021">4</a></sup> on a single
+snapshot of the protein-ligand complex.</p>
+<p>The QM-PBSA approach is a quantum-mechanical adaptation of traditional
+MM-PBSA, which is an end-point, implicit solvent, binding free energy
+method. In this approach, the binding free energy is given by</p>
+<!-- :label: net -->
+<div class="arithmatex">\[
+   \Delta G_{\textrm{bind}}= G_{\textrm{complex}} - G_{\textrm{host}} - G_{\textrm{ligand}} \tag{1},
+\]</div>
+<p>where $G_{\textrm{complex}}, <span class="arithmatex">\(G_{\textrm{host}}\)</span>, and
+<span class="arithmatex">\(G_{\textrm{ligand}}\)</span> is the free energy of, respectively, the
+complex, host and ligand in an implicit solvent. Each of these can be
+decomposed into three terms,</p>
+<!-- :label: energy_terms -->
+<div class="arithmatex">\[
+   G=E + \Delta{}G_{\textrm{solv}} - TS \tag{2},
+\]</div>
+<p>where <span class="arithmatex">\(E\)</span> is the total gas-phase energy,
+<span class="arithmatex">\(\Delta{}G_{\textrm{solv}}\)</span> is the free energy of solvation and
+<span class="arithmatex">\(-TS\)</span> is an entropy correction term. In this tutorial, the entropy
+term will be ignored, as it is usually calculated in other programs
+using normal mode analysis. The linear-scaling DFT code ONETEP will be
+used to calculate the gas-phase and solvation free energy of the
+complex, host and ligand at a fully quantum-mechanical level.</p>
+<h2 id="setting-up-the-calculations">Setting up the calculations<a class="headerlink" href="#setting-up-the-calculations" title="Permanent link">¶</a></h2>
+<p>We will set up three separate calculations, one each for the
+protein-ligand complex, the protein (host) and catechol (ligand). The
+structure of the complex was taken from a molecular dynamics
+simulation of the complex used in two QM-PBSA studies on this system
+<sup id="fnref2:Fox2014"><a class="footnote-ref" href="#fn:Fox2014">3</a></sup> <sup id="fnref2:Gundelach2021"><a class="footnote-ref" href="#fn:Gundelach2021">4</a></sup>. The structure of the
+unbound ligand and host were obtained from the complex by deletion of
+the respective molecules. Apart from the atomic coordinates, we must
+specify the details of the ONETEP single-point calculations, provide
+pseudopotentials for the atoms present in the system and adapt job
+submission scripts to run the calculations on the supercomputer of
+choice.</p>
+<h3 id="the-input-files">The input files<a class="headerlink" href="#the-input-files" title="Permanent link">¶</a></h3>
+<p>The ONETEP input file, referred to as the <code>.dat</code> file, contains two
+main elements: 1) the coordinates and atom types of the system (i.e the
+structural information) and 2) the details of the calculation. Due to
+the large system size, we have split theses two components across
+separate files: the <code>.dat</code> file, which contains the structural
+information, and a <code>.header</code> file which contains instructions for
+ONETEP. This header file is included in the <code>.dat</code> file via the
+command <code>includefile</code>. All information could also be contained in a
+single <code>.dat</code> file; however, the use of a separate header file can
+make it easier to set up hundreds or even thousands of calculations
+which differ only in the coordinates and not the calculation settings.</p>
+<h4 id="dat-file"><code>.dat</code> file<a class="headerlink" href="#dat-file" title="Permanent link">¶</a></h4>
+<p>The two blocks included in the <code>.dat</code> file are <code>lattice_cart</code> and
+<code>positions_abs</code>, which specify the simulation cell and absolute
+positional coordinates of each atom within the simulation cell,
+respectively. The <code>includefile</code> command on the first line specifies
+the header file to include for the calculation.</p>
+<h4 id="header-file"><code>.header</code> file<a class="headerlink" href="#header-file" title="Permanent link">¶</a></h4>
+<p>This <code>.header</code> file contains all further details of the ONETEP
+calculation. The <code>species</code> block specifies the name, element, atomic
+number, number of NGWFs and the NGWF radius for each atom type in the
+system. The <code>species_pot</code> lists the names of the pseudopotential files
+for each atom type. The rest of the file consists of ONETEP keywords
+which control the details of the calculation. The provided header files
+are fully commented, and details on each keyword are given in the ONETEP
+keyword directory (http://onetepkeywords.icedb.info/onetepdoc). We will
+be performing single-point energy calculations using the PBE
+exchange-correlation functional, the D2 dispersion correction and
+ONETEP’s minimal paramater implicit solvent model. The calculation will
+output verbose detail and an <code>.xyz</code> file for easy visualization. The
+total system charge is +9 for the complex and host and 0 of the ligand.
+The implicit solvent is set to use the default parameters for water.</p>
+<h3 id="submission-scripts">Submission Scripts<a class="headerlink" href="#submission-scripts" title="Permanent link">¶</a></h3>
+<p>Due to the large system size of over 2500 atoms, these single-point
+calculations can only be run on a supercomputer. Thus, a submission
+script appropriate for the HPC environment you are working on will be
+necessary. The standard distribution of ONETEP provides sample
+submission scripts for a variety of HPC systems. These can be found in
+your ONETEP directory under <code>hpc_resources</code>.</p>
+<p>We recommend to run the complex and host calculations on multiple
+compute nodes, making full use of the hybrid MPI-OMP capabilities of
+ONETEP. On the national supercomputer ARCHER2, the use of 4 compute
+nodes (128 cores each) with 32 MPI processes and 16 OMP threads per
+process results in a wall-time of about 8 hours. Due to the much smaller
+size of the ligand, the calculation on the ligand in solvent should be
+limited to a single node, with at most 10 MPI processes.</p>
+<h2 id="evaluating-the-outputs">Evaluating the Outputs<a class="headerlink" href="#evaluating-the-outputs" title="Permanent link">¶</a></h2>
+<p>Upon successful completion of the calculations, we will examine the
+three <code>.out</code> files created. Each of these files contains the full
+details and log of the calculation, as well as the final results and
+some timing information. While much information about the system can be
+gained from the output files, we will focus first only on the final
+results necessary to estimate the binding free energy of the ligand,
+catechol, to the protein.</p>
+<!-- .. This is what it looked like in the original LaTeX after parsed by pandoc: -->
+<!--   | l|d8.0d8.0d5.2\|d5.2 kcal/mol & & & & -->
+<!--   | :math:`E` & -7372184.3 & -7328209.2 & -43940.1 & -35.0 -->
+<!--   | :math:`\Delta{}G_{\textrm{solv}}` & -2615.0 & -2613.3 & -9.7 & 8.0 -->
+<!--   | :math:`G` & -7374799.3 & -7330822.5 & -43949.7 & -27.1 -->
+<figure>
+<p><img _="," alt="image-2" class="center" src="../files/T8_energy_table.png" width="80%"/>
+</p>
+<figcaption>Table.1 Calculating the binding free energy of catechol to the protein.</figcaption>
+</figure>
+<!-- .. _Figure T8_energies: -->
+<!-- .. figure:: _static/tutorial_8/T8_energy_table.png -->
+<!--    :alt: Calculating the binding free energy of catechol to the protein. -->
+<!--    :width: 95.0% -->
+<!--    :target: _static/tutorial_8/T8_energy_table.png -->
+<!-- -->
+<!--    Calculating the binding free energy of catechol to the protein. -->
+<p>As outlined in Eqs. 1 and 2 we need to calculate the total free
+energy of the complex, host and ligand before subtracting the total
+energy of the host and ligand from that of the complex. As stated
+before, we will be ignoring any entropy contributions in this tutorial.
+The total energy is then the sum of the total gas phase energy and the
+solvation free energy. These energies are summarized in an easy to read
+section at the very end of the output files, just before the timing
+information. To find it, search the output file for
+<code>Total energy in solvent</code>. This section breaks down the different
+energy contributions and states the total energies in vacuum (gas phase)
+and in solvent as well as the solvation free energy. Table.1 summarizes the energy values obtained.
+To estimate the binding free energy we simply apply Eq. 1 to yield:</p>
+<div class="arithmatex">\[
+  \begin{aligned}
+  \Delta G_{\textrm{bind}}&amp;=G_{\textrm{complex}}-G_{\textrm{host}}-G_{\textrm{ligand}}=\\
+  &amp;=-7374799.3 -(-7330822.5) - (-43949.7) = -27.1 \textrm{kcal/mol}
+  \end{aligned}
+  .
+\]</div>
+<p>Thus, the estimated binding energy of catechol to the T4 lysozyme is
+-27.1 kcal/mol. However, there are a number of severe limitations of
+this estimate: 1) the entropy correction term <span class="arithmatex">\(-TS\)</span> has been
+neglected; 2) only a single snapshot was evaluated; 3) the implicit
+solvent model incorrectly interprets the buried cavity in the T4
+lysozyme, and 4) the QM-PBSA method is designed to calculate relative
+binding free energies between similar sets of ligands. For an in depth
+look at the full application of the QM-PBSA binding free energy method
+to 7 ligands binding to the T4 lysozyme and a discussion of the errors,
+convergence and limitations of the method, please consult our recent
+publication <sup id="fnref3:Gundelach2021"><a class="footnote-ref" href="#fn:Gundelach2021">4</a></sup>.</p>
+<h3 id="cavity-correction">Cavity Correction<a class="headerlink" href="#cavity-correction" title="Permanent link">¶</a></h3>
+<p>The minimal-parameter PBSA solvent-model implemented in ONETEP
+incorrectly handles the buried cavity in the T4 lysozyme (L99A/M102Q).
+This is a known issue for solvent models based on the solvent accessible
+surface area, and has been described in detail in 2010 by Genheden <em>et
+al.</em> <sup id="fnref:Genheden2010"><a class="footnote-ref" href="#fn:Genheden2010">10</a></sup>, and in 2014 by Fox <em>et al.</em> <sup id="fnref3:Fox2014"><a class="footnote-ref" href="#fn:Fox2014">3</a></sup>.</p>
+<p>In the un-complexed protein calculation, i.e the host, the surface area
+of the interior of the buried binding site is counted towards the
+solvent accessible surface area (SASA) used to calculate the non-polar
+solvation term. Thus, the non-polar term of just the protein is larger
+than that of the complex indicating the formation of a larger cavity in
+the solvent. Conceptually, the SASA model creates an additional,
+fictitious, cavity in the solvent with the SASA of the buried binding
+site. Because the non-polar term of both the protein and complex are
+known, a post-hoc cavity-correction may be applied to remove the
+additional (spurious) contribution of the buried cavity to the non-polar
+solvation energy. A full derivation is provided in <sup id="fnref4:Fox2014"><a class="footnote-ref" href="#fn:Fox2014">3</a></sup>.</p>
+<div class="arithmatex">\[
+   E_{\textrm{cav-cor}}=7.116(E^{\textrm{host}}_{\textrm{non-polar}}-E^{\textrm{complex}}_{\textrm{non-polar}})=7.116(289.5 - 286.2) = 23.5 \text{ kcal/mol}.
+       \label{eq:cav-cor}
+\]</div>
+<p>Applying the cavity correction term calculated above to the binding free
+energy, we obtain a cavity-corrected binding free energy of
+<span class="arithmatex">\(-27.1 + 23.5 = -3.6\)</span> kcal/mol. For comparison, the experimental
+binding energy of catechol to the T4 lysozyme is -4.4 kcal/mol. It
+should however be noted, that the close correspondence of this single
+snaphot QM-PBSA binding free energy to the absolute experimental energy
+is likely a lucky coincidence, as the QM-PBSA method is mainly
+applicable to relative binding free energies and the entropy correction
+term has not yet been included.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">¶</a></h2>
+<p>We will now show how a number of useful properties of the system can be
+studied through a <em>properties calculation</em>. In the interest of saving
+computational time, and for clarity of presentation, we will use the
+ligand system as an example.</p>
+<p>Add the following keywords to the <code>.header</code> file of the ligand calculation:
+</p><div class="language-fortran highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="w"> </span><span class="n">do_properties</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-0-2"><span class="w"> </span><span class="n">dx_format</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-0-3"><span class="w"> </span><span class="n">cube_format</span><span class="w"> </span><span class="n">F</span>
+</span></code></pre></div></td></tr></table></div>
+ and run it again.
+<p>The first of these keywords instructs ONETEP to perform a <em>properties
+calculation</em> towards the end of the run. This will calculate, among
+others, Mulliken charges on the atoms, bond lengths, the HOMO-LUMO gap,
+the density of states (DOS) and some grid-based quantities, such as the
+HOMO and LUMO canonical molecular orbitals, electronic charge density
+and potential. The grid-based quantities (often called <em>scalarfields</em>)
+can be output in three different formats: <code>.cube</code>, <code>.dx</code>, and
+<code>.grd</code>. By default <code>.cube</code> files are written, and not the other two
+formats. In this example we switch off <code>.cube</code> output and turn on
+<code>.dx</code> output. This is effected by the last two keywords.</p>
+<p>Once your calculation finishes, you will see that quite a number of
+<code>.dx</code> files have been produced:</p>
+<ul>
+<li>
+<p><code>xxx_HOMO.dx</code> – density of the canonical HOMO orbital.</p>
+</li>
+<li>
+<p><code>xxx_LUMO.dx</code> – density of the canonical LUMO orbital.</p>
+</li>
+<li>
+<p><code>xxx_HOMO-n.dx</code> – density of the n-th
+   canonical orbital below HOMO.</p>
+</li>
+<li>
+<p><code>xxx_LUMO+n.dx</code> – density of the n-th
+   canonical orbital above LUMO.</p>
+</li>
+<li>
+<p><code>xxx_density.dx</code> – the electronic density of the entire system.</p>
+</li>
+<li>
+<p><code>xxx_potential.dx</code> – the total potential (ionic + Hartree + XC) in
+   the system.</p>
+</li>
+<li>
+<p><code>xxx_electrostatic_potential.dx</code> – the electrostatic potential
+   (ionic + Hartree) in the system.</p>
+</li>
+</ul>
+<p>These files correspond to the calculation in solvent. There will be a
+second set of <code>.dx</code> files with <code>vacuum</code> in their names – these
+correspond to the calculation in vacuum. This lets you study and
+visualize in-vacuum and in-solvent properties separately and to perform
+comparisons between the two. Here, you can expect the scalarfields to be
+rather similar between in-vacuum and in-solvent because the ligand is
+charge-neutral and polarizes the solvent only very slightly.</p>
+<p>There is a separate tutorial (Tutorial 5) devoted to visualization. You
+can use the skills taught there to create fancy visualizations of the
+properties of your choice. Here we will only show how to produce a neat
+visualization of the electronic density coloured by the electrostatic
+potential using VMD.</p>
+<p>Load the electronic density and the electrostatic potential into one
+molecule, and the atomic coordinates into a separate molecule. This will
+make it easier treat the scalarfields and the atomic coordinates
+separately. To achieve this, issue:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">   vmd ligand_2001_density.dx ligand_2001_electrostatic_potential.dx -m ligand_2001.xyz
+</span></code></pre></div></td></tr></table></div>
+<p>Once VMD loads the files, go to <code>Graphics/Representations</code>. Ensure
+<code>Selected Molecule</code> (at the top of the window) is the <code>.xyz</code> file
+(atomic coordinates). Under <code>Drawing Method</code> Choose <code>CPK</code> – this
+will create a ball-and-stick drawing of the ligand. Switch
+<code>Selected Molecule</code> to the <code>.density.dx</code> file to operate on the
+electronic density scalarfield. Under <code>Drawing Method</code> choose
+<code>Isosurface</code> if it is not chosen already. Choose an <code>Isovalue</code> of
+<code>0.1</code> to pick a reasonable density isovalue to plot. Under
+<code>Coloring Method</code> choose <code>Volume</code> (you might need to scroll to the
+very bottom to get there). In the tiny drop-down window to the right of
+<code>Coloring Method</code> switch from scalarfield 0 (the density itself) to
+scalarfield 1 (the potential) – this will colour the density <em>with</em> the
+potential. For <code>Material</code> (further to the right) choose <code>Glass2</code> –
+this will choose a somewhat translucent material that will let us see
+both the ball-and-stick model and the electronic density. Under <code>Draw</code>
+in the bottom-right of the window, choose <code>Solid Surface</code> instead of
+<code>Points</code>. Finally, let’s change the range of the potential to the
+kinds of values that occur at the distance from the molecule at which
+our electronic density isosurface lies. These have been determined by
+trial and error. There are four tabs just above <code>Coloring Method</code>.
+Somewhat counterintuitively, switch to <code>Trajectory</code>, where, under
+<code>Color Scale Data Range</code> you can enter the minimum and maximum values
+for the potential (in eV). Enter <code>-1</code> in the left field and <code>1.5</code> in
+the right field and click <code>Set</code>. This should give a nice
+representation, which you can then rotate and translate to your liking
+using the mouse in the <code>OpenGL Display</code> window. Once you are
+satisfied, you can render the final image by going to <code>File/Render</code>.
+In the top drop-down menu choose <code>Tachyon</code> and click on
+<code>Start Rendering</code>. After a short while you will get a <code>.tga</code> (“TARGA
+format”) file in the directory you are working in. It will look more or
+less like the graphics in Fig.2. Most graphics
+manipulation programs and graphics viewers read <code>.tga</code> files. If you
+have <code>ImageMagick</code> installed, you can use it to convert the image to a
+more common format, like <code>.png</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">   convert vmdscene.dat.tga vmdscene.dat.png
+</span></code></pre></div></td></tr></table></div>
+<figure>
+<p><img _="," alt="image-1" class="center" src="../files/T8_vmdscene.dat.png" width="40%"/>
+</p>
+<figcaption>Fig.2 Visualization of the ligand in VMD. A ball-and-stick model of the
+   molecule is shown, together with an isosurface of the electronic
+   density, coloured by the electrostatic potential.
+  </figcaption>
+</figure>
+<!-- .. _Figure fig:denspot: -->
+<!-- .. figure:: _static/tutorial_8/T8_vmdscene.dat.png -->
+<!--    :alt: Visualization of the ligand in VMD. A ball-and-stick model of the molecule is shown, together with an isosurface of the electronic density, coloured by the electrostatic potential. -->
+<!--    :name: fig:denspot -->
+<!--    :width: 60.0% -->
+<!--    :target: _static/tutorial_8/T8_vmdscene.dat.png -->
+<!-- -->
+<!--    Visualization of the ligand in VMD. A ball-and-stick model of the -->
+<!--    molecule is shown, together with an isosurface of the electronic -->
+<!--    density, coloured by the electrostatic potential. -->
+<h3 id="atomic-charges">Atomic charges<a class="headerlink" href="#atomic-charges" title="Permanent link">¶</a></h3>
+<h4 id="mulliken-population-analysis">Mulliken population analysis<a class="headerlink" href="#mulliken-population-analysis" title="Permanent link">¶</a></h4>
+<p>By default, during a properties calculation, ONETEP performs Mulliken
+population analysis, calculating partial atomic charges. The charges are
+written to the output file, in a table that looks like this:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">       Mulliken Atomic Populations
+</span><span id="__span-3-2">       ---------------------------
+</span><span id="__span-3-3">   Species  Ion    Total   Charge (e)
+</span><span id="__span-3-4">   ==================================
+</span><span id="__span-3-5">     O      1       6.750     -0.750
+</span><span id="__span-3-6">     H      2       0.448      0.552
+</span><span id="__span-3-7">     C      3       3.817      0.183
+</span><span id="__span-3-8">   ...
+</span><span id="__span-3-9">   ==================================
+</span></code></pre></div></td></tr></table></div>
+<p>The partial charges (in the electrons-are-negative sign convention) are
+output in the last column.</p>
+<p>Mulliken population analysis has a number of drawbacks, chief among
+which is that it depends on the basis set used and there is no
+well-defined complete basis set limit. Below we discuss two alternative
+schemes that can be used in ONETEP: Natural Population Analysis (NPA)
+and Density-Derived Electrostatic and Chemical (DDEC) analysis.</p>
+<h4 id="natural-population-analysis">Natural Population Analysis<a class="headerlink" href="#natural-population-analysis" title="Permanent link">¶</a></h4>
+<p>In Natural Population Analysis the set of non-orthogonal, optimized
+NGWFs is transformed into a set of orthogonal atom-centered Natural
+Atomic Orbitals (NAOs). This approach lets empty, highly-diffuse
+orbitals distort to achieve orthogonality with their more
+highly-preserved occupied counterparts, ensuring the final NAO
+population is stable with respect to basis set size. More details, and
+references to papers on the method, can be found in the documentation
+for this functionality -- chapter "Population Analysis" in the main ONETEP documentation.</p>
+<p>To perform Natural Population Analysis <em>in lieu</em> of Mulliken
+population analysis, add the following keyword to your previous ligand
+calculation: <code>write_nbo T</code> and run it again. Keep the three keywords you added 
+last time. Once your calculation completes you will find the results of NPA in
+your output file. They will look like this:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">   ================================================
+</span><span id="__span-4-2">                  Natural Population
+</span><span id="__span-4-3">   ------------------------------------------------
+</span><span id="__span-4-4">    Summary
+</span><span id="__span-4-5">   ------------------------------------------------
+</span><span id="__span-4-6">      Atom        Population (e)      Charge (e)
+</span><span id="__span-4-7">   ------------------------------------------------
+</span><span id="__span-4-8">    O        1         6.7313861      -0.7313861
+</span><span id="__span-4-9">    H        2         0.4487370       0.5512630
+</span><span id="__span-4-10">    C        3         3.7852506       0.2147494
+</span><span id="__span-4-11">   ...
+</span><span id="__span-4-12">   ------------------------------------------------
+</span></code></pre></div></td></tr></table></div>
+<h4 id="density-derived-electrostatic-and-chemical-ddec-analysis">Density-Derived Electrostatic and Chemical (DDEC) analysis<a class="headerlink" href="#density-derived-electrostatic-and-chemical-ddec-analysis" title="Permanent link">¶</a></h4>
+<p>ONETEP uses the DDEC3 method [Manz2012]_ to effect
+atoms-in-molecule electron density partitioning, producing partial
+charges, as well as higher multipoles (if desired), which are both
+chemically meaningful and give a faithful reproduction of the
+electrostatic potential of the QM system. More details, and references
+to papers on the method, can be found in the documentation at
+<a href="www.onetep.org/pmwiki/uploads/Main/Documentation/ddec.pdf&gt;">www.onetep.org/pmwiki/uploads/Main/Documentation/ddec.pdf</a>.</p>
+<p>To perform DDEC analysis <em>in lieu</em> of Mulliken population analysis,
+add the following keyword to your previous ligand calculation:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">ddec_calculate T
+</span></code></pre></div></td></tr></table></div>
+<p>You will also need to add a <code>block ddec_rcomp</code> that will specify
+where the reference ion densities can be found. You will need <em>two</em>
+reference density files for every atomic species in your system – one
+for the core and one for the total density, except for H and He which
+only require the total density file. The reference density files for a
+number of often-found elements can be found in the <code>c2_refdens</code>
+directory of your ONETEP installation. Fortunately all the files
+necessary for our ligand calculation (so, reference densities for C, H
+and O) are already there. Add the following block to your ligand input
+file:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">   %block ddec_rcomp
+</span><span id="__span-6-2">   H ALL "H_c2.refconf"
+</span><span id="__span-6-3">   O ALL "O_c2.refconf"
+</span><span id="__span-6-4">   O CORE "O_c2.coreconf"
+</span><span id="__span-6-5">   C ALL "C_c2.refconf"
+</span><span id="__span-6-6">   C CORE "C_c2.coreconf"
+</span><span id="__span-6-7">   %endblock ddec_rcomp
+</span></code></pre></div></td></tr></table></div>
+<p>and copy the five files listed in the block from the <code>c2_refdens</code>
+directory to where your calculation resides. The documentation explains
+where you can find reference density files for other elements, should
+you ever need them.</p>
+<p>Once you re-run your ligand calculation, you will find the results of
+DDEC analysis towards the end of your output file. They will look like
+this:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">   ------------------------------------------------
+</span><span id="__span-7-2">                DDEC Charges (X=0.21)
+</span><span id="__span-7-3">   ------------------------------------------------
+</span><span id="__span-7-4">      Atom        Population (e)      Charge (e)
+</span><span id="__span-7-5">   ------------------------------------------------
+</span><span id="__span-7-6">    O        1         8.5534066      -0.5534066
+</span><span id="__span-7-7">    H        2         0.5775414       0.4224586
+</span><span id="__span-7-8">    C        3         5.8305022       0.1694978
+</span><span id="__span-7-9">   ...
+</span><span id="__span-7-10">   ------------------------------------------------
+</span></code></pre></div></td></tr></table></div>
+<h4 id="comparison-of-mulliken-npa-and-ddec-charges">Comparison of Mulliken, NPA and DDEC charges<a class="headerlink" href="#comparison-of-mulliken-npa-and-ddec-charges" title="Permanent link">¶</a></h4>
+<p>The three approaches for calculating partial charges are compared in
+Table.2. Mulliken charges are, in
+general, the most pronounced out of the three, while DDEC partial
+charges are overall smaller in absolute value. The predictions of NPA
+are rather close to Mulliken analysis, while DDEC differs more from the
+first two.</p>
+<!-- .. This is what it looked like after pandoc parsed the original LaTeX: -->
+<!--   | \|c|c|d2.3\|d2.3\|d2.3\| Atom number & Species & & & -->
+<!--   | & O & -0.750 & -0.731 & -0.553 -->
+<!--   | 2 & H & 0.552 & 0.551 & 0.422 -->
+<!--   | 3 & C & 0.183 & 0.215 & 0.169 -->
+<!--   | 4 & C & -0.319 & -0.301 & -0.229 -->
+<!--   | 5 & H & 0.311 & 0.251 & 0.160 -->
+<!--   | 6 & C & -0.320 & -0.261 & -0.158 -->
+<!--   | 7 & H & 0.295 & 0.237 & 0.130 -->
+<!--   | 8 & C & -0.313 & -0.252 & -0.124 -->
+<!--   | 9 & H & 0.298 & 0.241 & 0.131 -->
+<!--   | 10 & C & -0.309 & -0.300 & -0.243 -->
+<!--   | 11 & H & 0.296 & 0.240 & 0.146 -->
+<!--   | 12 & C & 0.230 & 0.246 & 0.216 -->
+<!--   | 13 & O & -0.711 & -0.685 & -0.510 -->
+<!--   | 14 & H & 0.557 & 0.549 & 0.444 -->
+<figure>
+<p><img _="," alt="image-3" class="center" src="../files/T8_charge_table.png" width="80%"/>
+</p>
+<figcaption>
+  Table.2 Comparison of three approaches for calculating partial charges for the ligand.
+  </figcaption>
+</figure>
+<!-- .. _Figure T8_charges: -->
+<!-- .. figure:: _static/tutorial_8/T8_charge_table.png -->
+<!--    :alt: Comparison of three approaches for calculating partial charges for the ligand. -->
+<!--    :width: 95.0% -->
+<!--    :target: _static/tutorial_8/T8_charge_table.png -->
+<!-- -->
+<!--    Comparison of three approaches for calculating partial charges for the ligand. -->
+<p>But... tables are boring. How can we visualize the charges using VMD?
+This is not as straightforward as we would like. The structure (atomic
+coordinates) is contained in the <code>.xyz</code> file, but the charges are not.
+Some programs can visualize a quantity added in an extra column in the
+<code>.xyz</code> file (which would become something like an <code>.xyzq</code> file), but
+not VMD, at least not easily.</p>
+<p>Fortunately VMD can read a different format named <code>.vtf</code>, which
+contains both the atomic coordinates and some scalar quantity, like
+charge. It is easy to convert an <code>.xyz</code> file and a list of charges to
+a <code>.vtf</code> file. We provide a simple <code>bash</code> script with this tutorial
+that does exactly that. It scans a ONETEP <code>.out</code> file for charge
+information (be it Mulliken, NPA or DDEC charges) and extracts the
+values of the charges on all atoms. It then looks for a corresponding
+<code>.xyz</code> file and, if found, it produces a <code>.vtf</code> file ready for
+visualizing with VMD.</p>
+<p>To use it, download the provided script called <code>out2charge</code>, put it in
+your <code>$PATH</code>, and run it on your output:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">   out2charge ligand_2001.out
+</span></code></pre></div></td></tr></table></div>
+<p>If everything goes well, you should see the following output:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1">   Charges were output to ligand_2001.charge.
+</span><span id="__span-9-2">   The files ligand_2001.xyz and ligand_2001.charge will be used
+</span><span id="__span-9-3">   to construct ligand_2001.vtf.
+</span><span id="__span-9-4">   Load ligand_2001.vtf into VMD and select 'Coloring method -&gt; charge'.
+</span></code></pre></div></td></tr></table></div>
+<p>Indeed, a new file <code>ligand_2001.charge</code> will be produced, containing
+the charges extracted from the <code>.out</code> file. These charges, together
+with the information in the <code>.xyz</code> file will be used to construct a
+<code>.vtf</code> file readable by VMD. Load this file into VMD:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">   vmd ligand_2001.vtf
+</span></code></pre></div></td></tr></table></div>
+<p>and go to <code>Graphics/Representation</code>. For <code>Drawing Method</code> choose
+<code>CPK</code> and for <code>Coloring Method</code> choose <code>Charge</code>. You will get a
+nice ball-and-stick model of your ligand, with the atoms coloured
+accorind to charge. In Fig.3 we show a comparison of
+the plots for the three ways of partitioning charge that we described
+earlier.</p>
+<figure>
+<p><img _="," alt="image-3" class="center" src="../files/T8_vmdscene.pov.png" width="40%"/>
+</p>
+<figcaption>
+   Fig.3 Comparison of atomic charges on the ligand: Mulliken (left), NPA
+   (middle) and DDEC (right). Warm colours correspond to negative
+   charges. Visualization in VMD.
+  </figcaption>
+</figure>
+<!-- .. _Figure fig:charges: -->
+<!-- .. figure:: _static/tutorial_8/T8_vmdscene.pov.png -->
+<!--    :alt: Comparison of atomic charges on the ligand: Mulliken (left), NPA (middle) and DDEC (right). Warm colours correspond to negative charges. Visualization in VMD. -->
+<!--    :name: fig:charges -->
+<!--    :width: 80.0% -->
+<!--    :target: _static/tutorial_8/T8_vmdscene.pov.png -->
+<!-- -->
+<!--    Comparison of atomic charges on the ligand: Mulliken (left), NPA -->
+<!--    (middle) and DDEC (right). Warm colours correspond to negative -->
+<!--    charges. Visualization in VMD. -->
+<p>This completes tutorial 8.</p>
+<p>Files for this tutorial:</p>
+<ul>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/out2charge">out2charge</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/T8_files.zip">T8_files.zip</a></li>
+</ul>
+
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:Bowler2012">
+<p>D. R. Bowler, and T. Miyazaki, <em>O(N) methods in electronic structure calculations</em>, Reports on Progress in Physics, 75 (2012). <a class="footnote-backref" href="#fnref:Bowler2012" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:Dziedzic2011">
+<p>J. Dziedzic, H. H. Helal, C.-K. Skylaris, A. A. Mostofi, and M. C. Payne, M. C., <em>Minimal parameter implicit solvent model for ab initio electronic-structure calculations</em>, EPL, 95 (2011). <a class="footnote-backref" href="#fnref:Dziedzic2011" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:Fox2014">
+<p>S. J. Fox, J. Dziedzic, T. Fox, C. S. Tautermann, and C.-K. Skylaris, <em>Density functional theory calculations on entire proteins for free energies of binding: Application to a model polar binding ste</em>, Proteins: Structure, Function and Bioinformatics, 82 (2014). <a class="footnote-backref" href="#fnref:Fox2014" title="Jump back to footnote 3 in the text">↩</a><a class="footnote-backref" href="#fnref2:Fox2014" title="Jump back to footnote 3 in the text">↩</a><a class="footnote-backref" href="#fnref3:Fox2014" title="Jump back to footnote 3 in the text">↩</a><a class="footnote-backref" href="#fnref4:Fox2014" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:Gundelach2021">
+<p>L. Gundelach, T. Fox, C. S. Tautermann, and C.-K. Skylaris, <em>Protein–ligand free energies of binding from full-protein DFT calculations: convergence and choice of exchange–correlation functional</em>, Physical Chemistry Chemical Physics, 23 (2021). <a class="footnote-backref" href="#fnref:Gundelach2021" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref2:Gundelach2021" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref3:Gundelach2021" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:Manz2012">
+<p>T. A. Manz, and D. S. Sholl, <em>Improved Atoms-in-Molecule Charge Partitioning Functional for Simultaneously Reproducing the Electrostatic Potential and Chemical States in Periodic and Nonperiodic Materials</em>, Journal of Chemical Theory and Computation, 8 (2012). <a class="footnote-backref" href="#fnref:Manz2012" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn:Mobley2017">
+<p>D. L. Mobley, and M. K. Gilson, Michael K., <em>Predicting Binding Free Energies: Frontiers and Benchmarks</em>, Annual Review of Biophysics, 46 (2017). <a class="footnote-backref" href="#fnref:Mobley2017" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn:Prentice2020_T8">
+<p>J. C. A Prentice, J. Aarons, J. C. Womack, A. E. A. Allen, L. Andrinopoulos, L. Anton, R. A. Bell, A. Bhandari, G. A. Bramley, R. J. Charlton, R. J. Clements, D. J. Cole, G. Constantinescu, F. Corsetti, S. M. M. Dubois, K. K. B. Duff, J. M. Escartin, A. Greco, Q. Hill, L. P. Lee, E. Linscott, D. D. O'Regan, M. J. S. Phipps, L. E. Ratcliff, A. Ruiz Serrano, E. W. Tait, G. Teobaldi, V. Vitale, N. Yeung, T. J. Zuehlsdorff, J. Dziedzic, P. D. Haynes, N. D. M. Hine, A. A. Mostofi, M. C. Payne, and C.-K. Skylaris, <em>The ONETEP linear-scaling density functional theory program</em>, Journal of Chemical Physics, 152 (2020). <a class="footnote-backref" href="#fnref:Prentice2020_T8" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn:Wilkinson2014">
+<p>K. A. Wilkinson, N. D. M. Hine, and C.-K. Skylaris, <em>Hybrid MPI-OpenMP parallelism in the ONETEP linear-scaling electronic structure code: Application to the delamination of cellulose nanofibrils</em>, Journal of Chemical Theory and Computation, 10 (2014). <a class="footnote-backref" href="#fnref:Wilkinson2014" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn:Womack2018">
+<p>J. C. Womack, L. Anton, J. Dziedzic, P. J. Hasnip, M. I. J. Probert, and C.-K. Skylaris, <em>DL-MG: A Parallel Multigrid Poisson and Poisson-Boltzmann Solver for Electronic Structure Calculations in Vacuum and Solution</em>, Journal of Chemical Theory and Computation, 14 (2018). <a class="footnote-backref" href="#fnref:Womack2018" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn:Genheden2010">
+<p>S. Genhenden, J. Kongsted, P. Soderhjelm, and U. Ryde, <em>Nonpolar solvation free energies of protein-ligand complexes</em>, Journal of Chemical Theory and Computation, 11 (2010). <a class="footnote-backref" href="#fnref:Genheden2010" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 ONETEP Collective
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="../../../javascripts/mkdocs_exporter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script src="../../../javascripts/katex.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+</body>
+</html>

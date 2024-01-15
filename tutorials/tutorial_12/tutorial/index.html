@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tutorials for ONTEP." name="description"/>
+<meta content="ONETEP collective" name="author"/>
+<link href="../../tutorial_11/tutorial/" rel="prev"/>
+<link href="../../tutorial_13/tutorial/" rel="next"/>
+<link href="../../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.4" name="generator"/>
+<title>Tutorial 12 - ONETEP Tutorials</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="light" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tutorial-12-quantum-embedding-with-time-dependent-embedded-mean-field-theory-hydrogenation-and-excitations-of-pentacene">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ONETEP Tutorials" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ONETEP Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tutorial 12
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="light" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="dark" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ONETEP Tutorials" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+    ONETEP Tutorials
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_1/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_4/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 4
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_5/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 5
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_6/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 6
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_8/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 8
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_9/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 9
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_10/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 10
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_11/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 11
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Tutorial 12
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Tutorial 12
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-utility-of-quantum-embedding">
+<span class="md-ellipsis">
+      The utility of quantum embedding
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedded-mean-field-theory">
+<span class="md-ellipsis">
+      Embedded mean-field theory
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pentacene">
+<span class="md-ellipsis">
+      Pentacene
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ground-state-emft-terminal-hydrogenation-of-pentacene">
+<span class="md-ellipsis">
+      Ground-state EMFT: terminal hydrogenation of pentacene
+    </span>
+</a>
+<nav aria-label="Ground-state EMFT: terminal hydrogenation of pentacene" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-emft-baseline-calculations">
+<span class="md-ellipsis">
+      Non-EMFT baseline calculations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#emft-calculations">
+<span class="md-ellipsis">
+      EMFT calculations
+    </span>
+</a>
+<nav aria-label="EMFT calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-carbon-atoms">
+<span class="md-ellipsis">
+      4 carbon atoms
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#larger-active-regions">
+<span class="md-ellipsis">
+      Larger active regions
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#further-investigations">
+<span class="md-ellipsis">
+      Further investigations
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#td-emft-excitations-of-pentacene-doped-p-terphenyl">
+<span class="md-ellipsis">
+      TD-EMFT: excitations of pentacene-doped p-terphenyl
+    </span>
+</a>
+<nav aria-label="TD-EMFT: excitations of pentacene-doped p-terphenyl" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-emft-benchmark">
+<span class="md-ellipsis">
+      Non-EMFT benchmark
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#td-emft-calculation">
+<span class="md-ellipsis">
+      TD-EMFT calculation
+    </span>
+</a>
+<nav aria-label="TD-EMFT calculation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#files-for-this-tutorial">
+<span class="md-ellipsis">
+      Files for this tutorial
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_13/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 13
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_14/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 14
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-utility-of-quantum-embedding">
+<span class="md-ellipsis">
+      The utility of quantum embedding
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#embedded-mean-field-theory">
+<span class="md-ellipsis">
+      Embedded mean-field theory
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pentacene">
+<span class="md-ellipsis">
+      Pentacene
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ground-state-emft-terminal-hydrogenation-of-pentacene">
+<span class="md-ellipsis">
+      Ground-state EMFT: terminal hydrogenation of pentacene
+    </span>
+</a>
+<nav aria-label="Ground-state EMFT: terminal hydrogenation of pentacene" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-emft-baseline-calculations">
+<span class="md-ellipsis">
+      Non-EMFT baseline calculations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#emft-calculations">
+<span class="md-ellipsis">
+      EMFT calculations
+    </span>
+</a>
+<nav aria-label="EMFT calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-carbon-atoms">
+<span class="md-ellipsis">
+      4 carbon atoms
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#larger-active-regions">
+<span class="md-ellipsis">
+      Larger active regions
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#further-investigations">
+<span class="md-ellipsis">
+      Further investigations
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#td-emft-excitations-of-pentacene-doped-p-terphenyl">
+<span class="md-ellipsis">
+      TD-EMFT: excitations of pentacene-doped p-terphenyl
+    </span>
+</a>
+<nav aria-label="TD-EMFT: excitations of pentacene-doped p-terphenyl" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-emft-benchmark">
+<span class="md-ellipsis">
+      Non-EMFT benchmark
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#td-emft-calculation">
+<span class="md-ellipsis">
+      TD-EMFT calculation
+    </span>
+</a>
+<nav aria-label="TD-EMFT calculation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#files-for-this-tutorial">
+<span class="md-ellipsis">
+      Files for this tutorial
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="Tutorial 12.pdf" href="index.pdf" title="Download as PDF"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14 2 6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8m4 18V9h-5V4H6v16h12m-6-1-4-4h2.5v-3h3v3H16l-4 4Z"></path></svg></a>
+
+<h1 id="tutorial-12-quantum-embedding-with-time-dependent-embedded-mean-field-theory-hydrogenation-and-excitations-of-pentacene">Tutorial 12: Quantum embedding with (time-dependent) embedded mean-field theory: hydrogenation and excitations of pentacene<a class="headerlink" href="#tutorial-12-quantum-embedding-with-time-dependent-embedded-mean-field-theory-hydrogenation-and-excitations-of-pentacene" title="Permanent link">¶</a></h1>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2Zm-.5-2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H10a.5.5 0 0 0-.5.5ZM6.17 4.165a.75.75 0 0 1-.335 1.006c-.228.114-.295.177-.315.201a.035.035 0 0 0-.008.016.423.423 0 0 0-.012.112v13c0 .07.008.102.012.112a.03.03 0 0 0 .008.016c.02.024.087.087.315.201a.749.749 0 1 1-.67 1.342c-.272-.136-.58-.315-.81-.598C4.1 19.259 4 18.893 4 18.5v-13c0-.393.1-.759.355-1.073.23-.283.538-.462.81-.598a.75.75 0 0 1 1.006.336ZM2.15 5.624a.75.75 0 0 1-.274 1.025c-.15.087-.257.17-.32.245C1.5 6.96 1.5 6.99 1.5 7v10c0 .01 0 .04.056.106.063.074.17.158.32.245a.75.75 0 0 1-.752 1.298C.73 18.421 0 17.907 0 17V7c0-.907.73-1.42 1.124-1.65a.75.75 0 0 1 1.025.274Z"></path></svg></span> Version: all versions
+<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"></path></svg></span> <a href="mailto:">Joseph Prentice</a>
+<!-- · :octicons-tag-16: Post-processing | DFT -->
+</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<h3 id="the-utility-of-quantum-embedding">The utility of quantum embedding<a class="headerlink" href="#the-utility-of-quantum-embedding" title="Permanent link">¶</a></h3>
+<p>Although ONETEP <sup id="fnref:ONETEP2020"><a class="footnote-ref" href="#fn:ONETEP2020">1</a></sup> makes first principles calculations of
+systems containing thousands of atoms feasible, particularly when
+using semi-local exchange-correlation functionals, it can still be
+very computationally costly to treat entire systems of this size with
+higher level theory, such as hybrid functionals, which require the
+computation of exact exchange. This is particularly relevant for
+excited state calculations, due to the well-known underestimation of
+the band gap by semi-local DFT, making excitation spectra performed
+with semi-local DFT quantitatively, or sometimes qualitatively
+wrong. However, if the physics/chemistry of interest in the system is
+known or expected to be localised to a particular subregion -- we call
+this the <code>active region</code> -- with the rest of the system acting as an
+environment influencing the active region, quantum embedding provides
+a way to achieve hybrid accuracy with a significantly reduced cost.</p>
+<p>This is achieved by treating the active region alone with the higher
+level of theory, with the rest of the system (the environment) treated
+at a lower level of theory. In ONETEP at present, this translates to
+treating the active region with hybrid DFT, and the environment with
+semi-local DFT. This is done within a single self-consistent
+calculation, to ensure that the two regions are able to influence one
+another. As hybrid DFT is only performed on the active region, which
+is typically small compared to the environment, the computational cost
+is significantly reduced.</p>
+<h3 id="embedded-mean-field-theory">Embedded mean-field theory<a class="headerlink" href="#embedded-mean-field-theory" title="Permanent link">¶</a></h3>
+<p>There are many different quantum embedding schemes; the scheme used in
+ONETEP is embedded mean-field theory (EMFT), originally proposed by
+Fornace et al. <sup id="fnref:Fornace2015"><a class="footnote-ref" href="#fn:Fornace2015">4</a></sup> This scheme has several advantages,
+including two particularly relevant to ONETEP: firstly, it partitions
+the system at a basis-set level, which works well with ONETEP's
+atom-centred NGWF basis.  Secondly, it is a mean-field theory
+throughout, like DFT, which means that many existing methods based on
+DFT can be easily modified to accommodate EMFT. This includes
+linear-response time-dependent DFT (LR-TDDFT), which allows electronic
+excitations to be computed -- we refer to this as TD-EMFT. For more
+details, please see the original EMFT paper <sup id="fnref2:Fornace2015"><a class="footnote-ref" href="#fn:Fornace2015">4</a></sup>, and the
+papers implementing ground state EMFT <sup id="fnref:Prentice2020"><a class="footnote-ref" href="#fn:Prentice2020">2</a></sup> and TD-EMFT
+<sup id="fnref:Prentice2022"><a class="footnote-ref" href="#fn:Prentice2022">3</a></sup> in ONETEP.</p>
+<p>EMFT is also fully compatible with the implicit solvent methods
+available within ONETEP, allowing for multi-level modelling of
+systems.</p>
+<h3 id="pentacene">Pentacene<a class="headerlink" href="#pentacene" title="Permanent link">¶</a></h3>
+<p>In this tutorial, we will look at both ground state EMFT and TD-EMFT,
+with the pentacene molecule as our test case. Ground state EMFT is
+demonstrated by looking at the terminal hydrogenation energy of
+pentacene, following Prentice et al. <sup id="fnref2:Prentice2020"><a class="footnote-ref" href="#fn:Prentice2020">2</a></sup>, and TD-EMFT is
+demonstrated by looking at the first excitation energy of
+pentacene-doped p-terphenyl, following Prentice. <sup id="fnref2:Prentice2022"><a class="footnote-ref" href="#fn:Prentice2022">3</a></sup></p>
+<h2 id="ground-state-emft-terminal-hydrogenation-of-pentacene">Ground-state EMFT: terminal hydrogenation of pentacene<a class="headerlink" href="#ground-state-emft-terminal-hydrogenation-of-pentacene" title="Permanent link">¶</a></h2>
+<h3 id="non-emft-baseline-calculations">Non-EMFT baseline calculations<a class="headerlink" href="#non-emft-baseline-calculations" title="Permanent link">¶</a></h3>
+<p>The terminal hydrogenation reaction for pentacene involves two
+hydrogen atoms becoming bonded to the two carbon atoms at one end of
+the pentacene molecule.</p>
+<p>Before using EMFT, we must first obtain the terminal hydrogenation
+energy without EMFT, with everything treated with first the PBE, then
+the B3LYP functionals. The input files required are <code>Pentacene.dat</code>,
+<code>HydrogenatedPentacene.dat</code>, and <code>H2.dat</code>.</p>
+<p>If you look at these files, you will notice that we have several
+different labels for carbon atoms (C1, C2, etc.) and similar for
+hydrogen atoms -- these will be used later to vary the size of our
+active region, by selecting different atoms to be included within it.</p>
+<p>To begin, simply run the input files as they are to obtain the ground
+state energy for the three structures at the PBE level. The
+hydrogenation energy can then be obtained as:</p>
+<!-- :label: HydrogenationEnergy -->
+<div class="arithmatex">\[
+   \Delta E_{\textrm{hyd}} = E_{\textrm{Hydrogenated Pentacene}} - ( E_{\textrm{Pentacene}} + E_{\textrm{H2}} ) .
+\]</div>
+<p>Make sure you save the <code>.tightbox_ngwfs</code> file from the <code>H2.dat</code>
+calculation for use later!</p>
+<p>Now repeat this for B3LYP. In all three <code>.dat</code> files, change
+<code>xc_functional</code> to be <code>B3LYP</code>, and add the following
+keywords/blocks to set up Hartree-Fock exchange (deleting any species
+labels in the <code>species_swri...</code> block that are not present in that
+particular structure):</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">   %block swri
+</span><span id="__span-0-2">     for_hfx 3 12 V 12 12 WE2
+</span><span id="__span-0-3">   %endblock swri
+</span><span id="__span-0-4">
+</span><span id="__span-0-5">   %block species_swri-for_hfx
+</span><span id="__span-0-6">   C
+</span><span id="__span-0-7">   C1
+</span><span id="__span-0-8">   C2
+</span><span id="__span-0-9">   C3
+</span><span id="__span-0-10">   H
+</span><span id="__span-0-11">   H1
+</span><span id="__span-0-12">   H2
+</span><span id="__span-0-13">   H3
+</span><span id="__span-0-14">   %endblock species_swri-for_hfx
+</span><span id="__span-0-15">
+</span><span id="__span-0-16">   hfx_use_ri for_hfx
+</span><span id="__span-0-17">   hfx_max_l 3
+</span><span id="__span-0-18">   hfx_max_q 12
+</span></code></pre></div></td></tr></table></div>
+<p>For more details on the meaning of these keywords, see the HFx
+documentation. The most important point for our purposes here is that
+we can control which atoms are included in the computation of HFx
+through the <code>species_swri...</code> block -- this will become important
+for our EMFT calculations.</p>
+<p>For reasons of stability, it is best to start the B3LYP H2 calculation
+from the PBE-optimised NGWFs: bring back the PBE-optimised
+<code>.tightbox_ngwfs</code> file, and add <code>read_tightbox_ngwfs : T</code> to
+<code>H2.dat</code>. Make sure you still keep a copy of the PBE-optimised
+<code>.tightbox_ngwfs</code> file safe, as we will need it later.</p>
+<p>Run these three calculations and compute the hydrogenation energy at
+the B3LYP level.</p>
+<h3 id="emft-calculations">EMFT calculations<a class="headerlink" href="#emft-calculations" title="Permanent link">¶</a></h3>
+<h4 id="4-carbon-atoms">4 carbon atoms<a class="headerlink" href="#4-carbon-atoms" title="Permanent link">¶</a></h4>
+<p>We can now start to use EMFT to see if we can get close to the B3LYP
+result without treating the entire molecule with B3LYP. Initially, our
+active region will just include the 4 C atoms closest to the site of
+the reaction, and the hydrogen atoms bonded to them. We will only need
+to do EMFT calculations for <code>Pentacene.dat</code> and
+<code>HydrogenatedPentacene.dat</code> -- the hydrogen molecule will always be
+in the active region, so should always be treated with B3LYP, although
+there is one subtlety which will be introduced shortly.</p>
+<p>To turn on EMFT, change <code>xc_functional</code> back to <code>PBE</code>, and add the
+following keywords to <code>Pentacene.dat</code> and
+<code>HydrogenatedPentacene.dat</code> (keep the other modifications you
+already made for HFx for the moment):</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">   use_emft             T
+</span><span id="__span-1-2">   use_emft_follow      T
+</span><span id="__span-1-3">   use_emft_lnv_only    T
+</span><span id="__span-1-4">   block_orthogonalise  F
+</span><span id="__span-1-5">   active_xc_functional B3LYP
+</span><span id="__span-1-6">   parallel_scheme      HOUSE
+</span><span id="__span-1-7">
+</span><span id="__span-1-8">   %block species_ngwf_regions
+</span><span id="__span-1-9">   C1 H1
+</span><span id="__span-1-10">   C C2 C3 H H2 H3
+</span><span id="__span-1-11">   %endblock species_ngwf_regions
+</span></code></pre></div></td></tr></table></div>
+<p>A brief explanation of each keyword:</p>
+<ul>
+<li><code>use_emft</code>: this turns on EMFT, so that the active region and
+   environment are treated with different levels of theory.</li>
+<li><code>use_emft_follow</code>: this toggles whether a non-EMFT calculation at
+   the lower level of theory (in this case, PBE) is done first, and
+   then uses that as a starting point for the EMFT calculation. For
+   this to happen, the value should be <code>T</code>.</li>
+<li><code>use_emft_lnv_only</code>: this toggles whether EMFT is used to
+   optimise both the NGWFs and the density kernel (value is <code>F</code>), or
+   just the density kernel (value is <code>T</code>). Typically, EMFT is only
+   used to optimise the density kernel (<code>T</code>), as NGWF optimisation
+   is poorly behaved under EMFT -- NGWFs can unphysically optimise
+   towards the region described by the level of theory that predicts
+   the lowest energy, and the block orthogonalisation procedure
+   designed to counteract this (discussed shortly) makes the NGWF
+   optimisation stall. The NGWFs are optimised at the lower level of
+   theory, and then fixed -- the error this introduces is typically
+   &lt;1% of the difference between the high and low levels of
+   theory. For more details, see Prentice et al. <sup id="fnref3:Prentice2020"><a class="footnote-ref" href="#fn:Prentice2020">2</a></sup></li>
+<li><code>block_orthogonalise</code>: this toggles whether a block
+   orthogonalisation procedure is applied to the NGWFs before using
+   EMFT. This transforms the NGWFs of the environment so that they are
+   orthogonal to the NGWFs of the active region, so the off-diagonal
+   blocks of the overlap matrix are 0. This prevents the emergence of
+   unphysical solutions that can occur in some systems. For this to
+   happen, the value should be <code>T</code>.</li>
+<li><code>active_xc_functional</code>: this selects the functional that will be
+   used in the active region, whilst <code>xc_functional</code> selects the
+   functional used in the environment.</li>
+<li><code>parallel_scheme</code>: this decides how MPI processes should be split
+   between the regions. <code>HOUSE</code> means that the processes are
+   distributed proportionally to the number of atoms within each
+   region; <code>SENATE</code> means that the processes are distributed equally
+   between all regions; and <code>NONE</code> means that each region will use
+   all the processes in turn. <code>HOUSE</code> is strongly preferred.</li>
+<li><code>block species_ngwf_regions</code>: this assigns species to regions,
+   with one region per line. The first line is the active region by
+   default.</li>
+</ul>
+<p>The first four keywords should be turned to <code>T</code> in the order they
+are listed in. The first three keywords should almost always be <code>T</code>
+for an EMFT calculation, with <code>block_orthogonalise</code> turned on if the
+calculation proves unstable without it. Here, we leave it off.</p>
+<p>We also need to modify the HFx set-up to match the fact we only want
+HFx in the active region. To do this, simply delete any species in the
+<code>species_swri...</code> block that are <em>not</em> in the active
+region. Remember that each species in the active region should be on
+its own line in the <code>species_swri...</code> block, whereas all the species
+in the active region should be on the first line of the
+<code>species_ngwf_regions</code> block.</p>
+<p>Once these additions/modifications have been made, run the
+calculations for pentacene and hydrogenated pentacene.</p>
+<p>Before we can compute the hydrogenation energy from these results,
+there is one more subtlety. As we optimised the active region NGWFs at
+the lower level of theory, but the active region density kernel with
+the higher level of theory, we need to do the same in our hydrogen
+molecule for consistency. To do this, bring back the
+<code>H2.tightbox_ngwfs</code> file you saved from the PBE calculation earlier,
+and re-run your B3LYP <code>H2.dat</code> calculation with the following
+modifications/additions:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">   read_tightbox_ngwfs : T
+</span><span id="__span-2-2">   maxit_ngwf_cg : 0
+</span></code></pre></div></td></tr></table></div>
+<p>You can now use these three results to compute the hydrogenation
+energy with an active region of this size.</p>
+<h4 id="larger-active-regions">Larger active regions<a class="headerlink" href="#larger-active-regions" title="Permanent link">¶</a></h4>
+<p>Next, expand the active region to include the 8 carbon atoms
+closest to the reaction site. To do this, add the C2 and H2 species to
+the active region (remember to remove them from the environment
+region!), and modify the HFx set-up to match. Rerun the pentacene and
+hydrogenated pentacene calculations, and compute the hydrogenation
+energy (you don't need to rerun the hydrogen molecule calculation, as
+you can just reuse the result obtained using PBE-optimised NGWFs).</p>
+<p>Finally, expand the active region further to include the 12 carbon
+atoms closest to the reaction site, by adding C3 and H3 to the active
+region. Re-calculate the hydrogenation energy.</p>
+<p>If you plot the hydrogenation energy vs. the size of the active
+region, you should see the hydrogenation energy approach the full
+B3LYP result. This demonstrates the ability of EMFT to obtain high
+level results at a reduced cost, even when the boundary between
+regions cuts through covalent bonds.</p>
+<p>This also demonstrates the importance of selecting the appropriate
+active region. In systems made up of weakly bonded parts
+(e.g. molecular crystals, solvated systems), the appropriate active
+region will often be obvious -- it will be the molecule or molecules
+of interest (examples of multiple-molecule active regions could
+include a nearest-neighbour dimer or a solute along with some
+nearest-neighbour solvent atoms). In extended covalent or ionic
+systems, the choice of active region may be more difficult, and should
+be carefully converged, in a similar way to that shown in this
+tutorial.</p>
+<h4 id="further-investigations">Further investigations<a class="headerlink" href="#further-investigations" title="Permanent link">¶</a></h4>
+<p>To further investigate the use of EMFT in ONETEP, you could look at
+the effects of:</p>
+<ul>
+<li>changing the active region further -- perhaps including more C
+   atoms, excluding H atoms, etc.,</li>
+<li>using block orthogonalisation,</li>
+<li>using other functionals for either the high or low level of theory
+   -- semi-local functionals can be used for the higher level,
+   although this is of course not expected to produce a significant
+   advantage,</li>
+</ul>
+<p>and many other possibilities. </p>
+<h2 id="td-emft-excitations-of-pentacene-doped-p-terphenyl">TD-EMFT: excitations of pentacene-doped p-terphenyl<a class="headerlink" href="#td-emft-excitations-of-pentacene-doped-p-terphenyl" title="Permanent link">¶</a></h2>
+<h3 id="non-emft-benchmark">Non-EMFT benchmark<a class="headerlink" href="#non-emft-benchmark" title="Permanent link">¶</a></h3>
+<p>Here, we will be looking at the S0 to S1 transition in pentacene,
+which is the lowest excited state observed in TDDFT. This is
+significantly affected by the environment. In particular, we are
+interested in pentacene-doped p-terphenyl, which is of interest for
+room-temperature maser applications, and how the p-terphenyl
+environment affects the excitation energy.</p>
+<p>To give us a reference for isolated pentacene, we first need to
+perform a high-level TDDFT calculation for pentacene. We will again
+use B3LYP as our high-level theory. The input file is
+<code>Pentacene_isolated.dat</code> -- as this tutorial assumes you are already
+familiar with running TDDFT calculations with ONETEP, we will not go
+into any detail, and this calculation can just be run as it is.</p>
+<h3 id="td-emft-calculation">TD-EMFT calculation<a class="headerlink" href="#td-emft-calculation" title="Permanent link">¶</a></h3>
+<p>We now perform a TD-EMFT calculation for a pentacene molecule
+surrounded by 6 p-terphenyl molecules, as extracted from the
+pentacene-doped p-terphenyl molecular crystal. The input file is
+<code>Pentacene_in_p-terphenyl.dat</code>. This can be run as it is, but one
+point regarding EMFT should be noted first. The general set-up of the
+EMFT calculation is precisely the same as for ground state EMFT, with
+one addition: the <code>species_tddft_kernel</code> block. By using this block,
+we can specify which species we will restrict our excitations to be
+localised on. Given that in a TD-EMFT calculation we expect the
+excitations of interest to be localised within the active region, the
+species contained within the <code>species_tddft_kernel</code> block should be
+a subset of those in the active region. Typically, the two will be
+identical, i.e., the contents of the <code>species_tddft_kernel</code> block
+should be the same as the first line of the <code>species_ngwf_regions</code>
+block. For more details, see the LR-TDDFT documentation.</p>
+<p>Run this calculation -- this may take some time. If you compare this to the
+results in Prentice <sup id="fnref3:Prentice2022"><a class="footnote-ref" href="#fn:Prentice2022">3</a></sup>, you can see that the result is
+very close to the experimental value of 2.09 eV.</p>
+<p>You can plot the resulting excitation as a <code>.cube</code> file, and
+visualise it using e.g. VESTA.</p>
+<h4 id="files-for-this-tutorial">Files for this tutorial<a class="headerlink" href="#files-for-this-tutorial" title="Permanent link">¶</a></h4>
+<ul>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Pentacene.dat">Pentacene.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/HydrogenatedPentacene.dat">HydrogenatedPentacene.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/H2.dat">H2.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Pentacene_isolated.dat">Pentacene_isolated.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Pentacene_in_p-terphenyl.dat">Pentacene_in_p-terphenyl.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/C_NCP19_PBE_OTF.usp">C_NCP19_PBE_OTF.usp</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/H_NCP19_PBE_OTF.usp">H_NCP19_PBE_OTF.usp</a></li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:ONETEP2020">
+<p>J. C. A. Prentice, J. Aarons, J. C. Womack, A. E. A. Allen, L. Andrinopoulos, L. Anton, R. A. Bell, A. Bhandari, G. A. Bramley, R. J. Charlton, R. J. Clements, D. J. Cole, G. Constantinescu, F. Corsetti, S. M. M. Dubois, K. K. B. Duff, J. M. Escartin, A. Greco, Q. Hill, L. P. Lee, E. Linscott, D. D. O'Regan, M. J. S. Phipps, L. E. Ratcliff, A. Ruiz Serrano, E. W. Tait, G. Teobaldi, V. Vitale, N. Yeung, T. J. Zuehlsdorff, J. Dziedzic, P. D. Haynes, N. D. M. Hine, A. A. Mostofi, M. C. Payne, and C.-K. Skylaris, <em>The ONETEP linear-scaling density functional theory program</em>, J. Chem. Phys. 152, 174111 (2020). <a class="footnote-backref" href="#fnref:ONETEP2020" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:Prentice2020">
+<p>J. C. A. Prentice, R. J. Charlton, A. A. Mostofi, and P. D. Haynes, <em>Combining Embedded Mean-Field Theory with Linear-Scaling Density-Functional Theory</em>, J. Chem. Theory Comput. 16, 354 (2020). <a class="footnote-backref" href="#fnref:Prentice2020" title="Jump back to footnote 2 in the text">↩</a><a class="footnote-backref" href="#fnref2:Prentice2020" title="Jump back to footnote 2 in the text">↩</a><a class="footnote-backref" href="#fnref3:Prentice2020" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:Prentice2022">
+<p>J. C. A. Prentice, <em>Efficiently Computing Excitations of Complex Systems: Linear-Scaling Time-Dependent Embedded Mean-Field Theory in Implicit Solvent</em>, J. Chem. Theory Comput. 18, 1542 (2020). <a class="footnote-backref" href="#fnref:Prentice2022" title="Jump back to footnote 3 in the text">↩</a><a class="footnote-backref" href="#fnref2:Prentice2022" title="Jump back to footnote 3 in the text">↩</a><a class="footnote-backref" href="#fnref3:Prentice2022" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:Fornace2015">
+<p>M. E. Fornace, J. Lee, K. Miyamoto, F. R. Manby, and T. F. Miller, <em>Embedded Mean-Field Theory</em>, J. Chem. Theory Comput. 11, 568 (2015). <a class="footnote-backref" href="#fnref:Fornace2015" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref2:Fornace2015" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 ONETEP Collective
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="../../../javascripts/mkdocs_exporter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script src="../../../javascripts/katex.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+</body>
+</html>

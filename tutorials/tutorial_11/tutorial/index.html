@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tutorials for ONTEP." name="description"/>
+<meta content="ONETEP collective" name="author"/>
+<link href="../../tutorial_10/tutorial/" rel="prev"/>
+<link href="../../tutorial_12/tutorial/" rel="next"/>
+<link href="../../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.4" name="generator"/>
+<title>Tutorial 11 - ONETEP Tutorials</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="light" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tutorial-11-electrified-electrode-electrolyte-interfaces-under-potentiostatic-control">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ONETEP Tutorials" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ONETEP Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tutorial 11
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="light" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="dark" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ONETEP Tutorials" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+    ONETEP Tutorials
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_1/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_4/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 4
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_5/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 5
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_6/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 6
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_8/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 8
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_9/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 9
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_10/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 10
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Tutorial 11
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Tutorial 11
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+<nav aria-label="Setting up the calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input-files">
+<span class="md-ellipsis">
+      Input files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-dat-file">
+<span class="md-ellipsis">
+      The Dat file
+    </span>
+</a>
+<nav aria-label="The Dat file" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grand-canonical-parameters">
+<span class="md-ellipsis">
+      grand canonical Parameters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solvation-parameters">
+<span class="md-ellipsis">
+      Solvation Parameters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#electrolyte-parameters">
+<span class="md-ellipsis">
+      Electrolyte Parameters
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#analysis">
+<span class="md-ellipsis">
+      Analysis
+    </span>
+</a>
+<nav aria-label="Analysis" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#visualisation">
+<span class="md-ellipsis">
+      visualisation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#where-to-go-next">
+<span class="md-ellipsis">
+      Where to go next?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_12/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 12
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_13/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 13
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_14/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 14
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+<nav aria-label="Setting up the calculations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input-files">
+<span class="md-ellipsis">
+      Input files
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-dat-file">
+<span class="md-ellipsis">
+      The Dat file
+    </span>
+</a>
+<nav aria-label="The Dat file" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grand-canonical-parameters">
+<span class="md-ellipsis">
+      grand canonical Parameters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#solvation-parameters">
+<span class="md-ellipsis">
+      Solvation Parameters
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#electrolyte-parameters">
+<span class="md-ellipsis">
+      Electrolyte Parameters
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#analysis">
+<span class="md-ellipsis">
+      Analysis
+    </span>
+</a>
+<nav aria-label="Analysis" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#visualisation">
+<span class="md-ellipsis">
+      visualisation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#where-to-go-next">
+<span class="md-ellipsis">
+      Where to go next?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+<span class="md-ellipsis">
+      References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="Tutorial 11.pdf" href="index.pdf" title="Download as PDF"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14 2 6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8m4 18V9h-5V4H6v16h12m-6-1-4-4h2.5v-3h3v3H16l-4 4Z"></path></svg></a>
+
+<h1 id="tutorial-11-electrified-electrode-electrolyte-interfaces-under-potentiostatic-control">Tutorial 11: Electrified electrode-electrolyte interfaces under potentiostatic control<a class="headerlink" href="#tutorial-11-electrified-electrode-electrolyte-interfaces-under-potentiostatic-control" title="Permanent link">¶</a></h1>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2Zm-.5-2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H10a.5.5 0 0 0-.5.5ZM6.17 4.165a.75.75 0 0 1-.335 1.006c-.228.114-.295.177-.315.201a.035.035 0 0 0-.008.016.423.423 0 0 0-.012.112v13c0 .07.008.102.012.112a.03.03 0 0 0 .008.016c.02.024.087.087.315.201a.749.749 0 1 1-.67 1.342c-.272-.136-.58-.315-.81-.598C4.1 19.259 4 18.893 4 18.5v-13c0-.393.1-.759.355-1.073.23-.283.538-.462.81-.598a.75.75 0 0 1 1.006.336ZM2.15 5.624a.75.75 0 0 1-.274 1.025c-.15.087-.257.17-.32.245C1.5 6.96 1.5 6.99 1.5 7v10c0 .01 0 .04.056.106.063.074.17.158.32.245a.75.75 0 0 1-.752 1.298C.73 18.421 0 17.907 0 17V7c0-.907.73-1.42 1.124-1.65a.75.75 0 0 1 1.025.274Z"></path></svg></span> Version: all versions
+<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"></path></svg></span> <a href="mailto:">Brad Ayers</a>; <a href="mailto:">Arihant Bhandari</a>
+<!-- · :octicons-tag-16: Post-processing | DFT -->
+</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>This tutorial endeavours to provide a comprehensive and illustrative example, highlighting ONETEP's ability to conduct potentiostatic calculations through the utilisation of a grand canonical DFT algorithm <sup id="fnref:Bhandari2021"><a class="footnote-ref" href="#fn:Bhandari2021">4</a></sup>.
+Alongside this written tutorial we have provided a Jupyter notebook that will guide you through the process of setting up and analysing a potentiostatic calculation.</p>
+<p>Moreover, this tutorial will demonstrate the feasibility of conducting these calculations within a solvent and electrolyte medium, employing the Fisicaro soft-sphere continuum model <sup id="fnref:Fisicaro2017"><a class="footnote-ref" href="#fn:Fisicaro2017">2</a></sup> 
+for solvation and the neutralisation via the grand canonical electrolyte (NECS) model <sup id="fnref:Bhandari2020"><a class="footnote-ref" href="#fn:Bhandari2020">1</a></sup>.</p>
+<h2 id="setting-up-the-calculations">Setting up the calculations<a class="headerlink" href="#setting-up-the-calculations" title="Permanent link">¶</a></h2>
+<p>We will begin this tutorial by creating lithium surfaces using a tool of your preference.
+For the purpose of illustration, we have employed the ASE <sup id="fnref:Larsen2017"><a class="footnote-ref" href="#fn:Larsen2017">3</a></sup> to generate a 10-layer BCC [100] lithium surface.
+This can be simply visualised within the provided Jupyter notebook, and will look as follows:</p>
+<figure>
+<p><img _="," alt="image-2" class="center" src="../files/Li90.png" width="50%"/></p>
+</figure>
+<!-- .. figure:: _static/tutorial_11/Li90.png -->
+<!--    :align: center -->
+<!--    :width: 300%                 -->
+<p>Notably, in this tutorial, we've chosen a (3x3x10) supercell with a 50 Å vacuum in total,
+a decision that allows us to employ 9 Bohr NGWF radii, whilst ensuring ample volume for sufficient electrolyte to neutralise our surface.</p>
+<h3 id="input-files">Input files<a class="headerlink" href="#input-files" title="Permanent link">¶</a></h3>
+<p>For the purposes of this tutorial ONETEP will require only two files to work:</p>
+<ol>
+<li>A .dat file, which contains all the information about your system (Atomic positions &amp; Lattice vectors), as well your simulation parameters.</li>
+<li>A Pseudopotential file, here we will employ the Norm-conserving on the fly generated CASTEP ones, but this is up to the users discretion.</li>
+</ol>
+<p><strong>Both of the aforementioned files, as well as a few output files can be downloaded below:</strong></p>
+<ul>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/keywords.dat&gt;">Keywords.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Li_surface.out">Li_surface.out</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Li_surface.dat">Li_surface.dat</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/T11_workbook.ipynb">T11_workbook.ipynb</a></li>
+<li><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span><a href="../files/Li_NCP19_PBE_OTF.usp">Li_NCP19_PBE_OTF.usp</a></li>
+</ul>
+<p>Note that the output files required for the visualisation section of this tutorial will have to generated by the user themselves, and will need to be copied to the same directory as the Jupyter notebook.</p>
+<p>Furthermore, Li_surface.dat is the .dat file used for your job submission, and Keywords.dat is simply the keywords that are taken in by the ASE script to generate said Li_surface.dat file.</p>
+<h3 id="the-dat-file">The Dat file<a class="headerlink" href="#the-dat-file" title="Permanent link">¶</a></h3>
+<h4 id="grand-canonical-parameters">grand canonical Parameters<a class="headerlink" href="#grand-canonical-parameters" title="Permanent link">¶</a></h4>
+<p>Upon opening the provided Li.dat file, you will encounter the standardx parameters that ONETEP users are already familiar with: <code>Task</code>, <code>Cutoff_energy</code>, <code>Lattice_cart</code>, and <code>Positions_frac</code>. </p>
+<p>However, after these, a new section of interest awaits, aptly named:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">   grand canonical Parameters
+</span><span id="__span-0-2">   ~~~~~~~~~~~~~~~~~~~~~~~~~
+</span><span id="__span-0-3">
+</span><span id="__span-0-4">   edft_grand_canonical T             
+</span><span id="__span-0-5">   edft_reference_potential -1.20 eV  
+</span><span id="__span-0-6">   edft_electrode_potential  0.20  V  
+</span></code></pre></div></td></tr></table></div>
+<p>Within the grand canonical formalism in ONETEP, there are two  main parameters of interest:</p>
+<ol>
+<li><strong>Chemical Potential of the Reference Electrode</strong></li>
+</ol>
+<p>Represented as <span class="arithmatex">\(\mu_{\mathrm{e}}^{\mathrm{ref}}\)</span>, this value (-1.20 eV in this example) corresponds to the reference electrode's chemical potential. It serves as the benchmark against which all applied potentials are measured.</p>
+<ol>
+<li><strong>Applied Potential to the Working Electrode</strong></li>
+</ol>
+<p>In this case, a potential of 0.20 volts (<span class="arithmatex">\(U\)</span>) is applied to the working electrode, giving us a working electrode potential of -1.40 eV (<span class="arithmatex">\(\mu_{\mathrm{e}}\)</span>).</p>
+<p>These parameters find application in the following equations:</p>
+<ul>
+<li><strong>Chemical Potential of the Working Electrode</strong> ($\mu_{\mathrm{e}}):</li>
+</ul>
+<div class="arithmatex">\[
+      \mu_{\mathrm{e}} = \mu_{\mathrm{e}}^{\mathrm{ref}} - e \cdot U
+\]</div>
+<ul>
+<li><strong>Number of Electrons</strong> (<span class="arithmatex">\(N_e\)</span>):</li>
+</ul>
+<div class="arithmatex">\[
+      N_e = \sum_i f_i = \sum_i \frac{1}{1 + \exp{\left(\beta(\epsilon_i - \mu_e)\right)}}
+\]</div>
+<ul>
+<li><strong>Charge on the System</strong> (<span class="arithmatex">\(q\)</span>):</li>
+</ul>
+<div class="arithmatex">\[
+      q = Z_{\mathrm{ion}} - e \cdot N_{e}
+\]</div>
+<p>Hence, by defining the applied potential and reference electrode potential, we can establish the chemical potential of the working electrode.
+It is worth noting here that only with zero applied potential (<span class="arithmatex">\(U = 0\)</span>) and the reference value set to the potential of zero charge
+(<span class="arithmatex">\(\mu_{\mathrm{e}}^{\mathrm{ref}} = \mu_{\mathrm{e}}^{\mathrm{PZC}}\)</span>) will we get zero charge on the system (<span class="arithmatex">\(q = 0\)</span>).</p>
+<p>As a result, we gain the ability to compute the number of electrons within our system using the Fermi-Dirac distribution. Where, <span class="arithmatex">\(\epsilon\)</span>  corresponds to the eigenvalues of the KS-equations, and <span class="arithmatex">\(\mu_{\mathrm{e}}\)</span>  is the chemical potential of our working electrode.
+Thereby allowing us to accurately calculate the charge present in the quantum system for a given applied potential.</p>
+<p>For a more detailed explanation of the grand canonical formalism, please refer to <sup id="fnref2:Bhandari2021"><a class="footnote-ref" href="#fn:Bhandari2021">4</a></sup>.</p>
+<h4 id="solvation-parameters">Solvation Parameters<a class="headerlink" href="#solvation-parameters" title="Permanent link">¶</a></h4>
+<p>This section will highlight some of the more unintuitive parameters that are required to conduct a solvated calculation.
+They will be presented in the order in which they appear in the data file as done for the grand canonical parameters above.</p>
+<p>This block will highlight the solvation parameters themselves, with the following block highlighting the solvent parameters</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">   is_include_apolar T                 # Enables solvent-accessible surface-area (SASA) approximation
+</span><span id="__span-1-2">   is_smeared_ion_rep T                # Enables the smeared ion representation due to multigrid solver
+</span><span id="__span-1-3">   is_implicit_solvent T               # Enables the solvation model
+</span><span id="__span-1-4">   is_solvation_properties T           # Provides extra properties i.e. electrolyte concentration
+</span><span id="__span-1-5">   is_dielectric_function soft_sphere  # Utilising the Fisicaro soft-sphere model
+</span></code></pre></div></td></tr></table></div>
+<p>For a much more detailed overview of each key parameter and its function, please refer to the documentation here: <a href="https://docs.onetep.org/implicit_solvation_v3.html">Solvent and Electrolyte model</a>. </p>
+<p>For the solvent itself we have the following parameters:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">   is_bulk_permittivity 90.7           # permitivity value of our solvent        (ethylene carbonate in this case)          
+</span><span id="__span-2-2">   is_solvent_surf_tension 0.0506 N/m  # Surface tension of the selected solvent (ethylene carbonate in this case)      
+</span></code></pre></div></td></tr></table></div>
+<p>Obviously these values will vary depending on the solvent of choice, and can be found in the literature.</p>
+<h4 id="electrolyte-parameters">Electrolyte Parameters<a class="headerlink" href="#electrolyte-parameters" title="Permanent link">¶</a></h4>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">   is_pbe                 full        # Enables the poison-boltzmann solver for electrolyte calculations
+</span><span id="__span-3-2">   is_pbe_bc_debye_screening T        # Enables the Debye screening boundary condition
+</span><span id="__span-3-3">   is_pbe_temperature   298.15        # Sets the temperature of the Boltzmann ions 
+</span><span id="__span-3-4">   is_pbe_neutralisation_scheme counterions_auto
+</span></code></pre></div></td></tr></table></div>
+<p>The above parameters are required to conduct electrolyte calculations, and are fairly self-explanatory.
+However, it is worth noting that there are several neutralisation schemes available, and the one chosen here is recommended for most cases.</p>
+<p>Additionally, the following parameters are required by DL_MG to conduct the multigrid calculations:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">   mg_max_res_ratio 1000.0
+</span><span id="__span-4-2">   mg_max_iters_vcycle 500
+</span><span id="__span-4-3">   mg_max_iters_newton 300
+</span><span id="__span-4-4">   mg_vcyc_smoother_iter_pre 4
+</span><span id="__span-4-5">   mg_vcyc_smoother_iter_post 4
+</span></code></pre></div></td></tr></table></div>
+<p>These parameters are fairly ubiquitous, and are not expected to change between calculations. For further information, please refer to the documentation here: <a href="https://docs.onetep.org/implicit_solvation_v3.html#fine-control-over-dl-mg">DL_MG</a>.</p>
+<p>lastly, we have the following ions block, that define our electrolytes and their concentrations:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">   %BLOCK SOL_IONS
+</span><span id="__span-5-2">   Li    +1 1.0 # all concentrations are in Molar
+</span><span id="__span-5-3">   PF6   -1 1.0
+</span><span id="__span-5-4">   %ENDBLOCK SOL_IONS
+</span></code></pre></div></td></tr></table></div>
+<p>Note that additional blocks can be added here to further adapt the model such as defining the soft-sphere radii of your system. </p>
+<h3 id="analysis">Analysis<a class="headerlink" href="#analysis" title="Permanent link">¶</a></h3>
+<p>Now that we have established the parameters required to conduct a solvated calculation, we can proceed to analyse the results obtained from either your own calculations or the provided ones.</p>
+<p>The first file of interest is the <code>Li.out</code> file, which contains the usual ONETEP output you might be familiar with, but will include additional that are of interest to us. 
+Firstly within CG-DFT inner loop, we can find the following:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">   Iter                              Commutator    Grand pot.(L=E-TS-muN)  DeltaL
+</span><span id="__span-6-2">     # 2                          0.000001192422   -1269.59513707094357  -2.05E-12
+</span><span id="__span-6-3">
+</span><span id="__span-6-4">   Step                       =       0.000010819110
+</span><span id="__span-6-5">   Energy (E)                 =   -1297.517766665092
+</span><span id="__span-6-6">   Entropy (-TS)              =      -0.065437957621
+</span><span id="__span-6-7">   Chemical potential (-muN)  =      27.988067551769
+</span><span id="__span-6-8">   Grand potential(L=E-TS-muN)=   -1269.595137070944
+</span><span id="__span-6-9">   Est. 0K Energy 0.5*(E+L)   =   -1283.556451868018
+</span><span id="__span-6-10">   Charge on quantum system   =      -3.995764707545
+</span><span id="__span-6-11">   Residual Non-orthogonality =      -0.000000000000
+</span></code></pre></div></td></tr></table></div>
+<p>If users are familiar with the canonical inner loop printing this will look familiar, however, there are a few key differences:</p>
+<ul>
+<li><strong>Grand Potential</strong> (<span class="arithmatex">\(L=E-TS-\mu_{\mathrm{e}}N\)</span>):</li>
+</ul>
+<p>This is the grand potential of the system, and is the quantity that is minimised in the grand canonical formalism,
+   rather than the Helmholtz free energy as in the canonical formalism.</p>
+<ul>
+<li><strong>Chemical Potential of the Working Electrode</strong> (<span class="arithmatex">\(-\mu_{\mathrm{e}}N\)</span>):</li>
+</ul>
+<p>This is the chemical potential of the working electrode, and is the quantity that is constant in the grand canonical formalism,
+   in direct contrast to the canonical formalism, where the number of electrons is constant.</p>
+<ul>
+<li>
+<p><strong>Charge on the System</strong> (<span class="arithmatex">\(q\)</span>): </p>
+<p>This is the charge on the quantum system and is an important value to consider when analysing the results of a potentiostatic calculation, as surface chemistry is dependent on the charge of one's system.</p>
+</li>
+</ul>
+<p>Another crucial section of the <code>Li.out</code> file is the bulk concentration of the electrolyte species, which can be found in the following section:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">    +--------------------------- Chemical potential --------------------------+
+</span><span id="__span-7-2">    |   # | Name | Bulk conc. |    mu_ideal   |   mu_excess   |    mu_total   |
+</span><span id="__span-7-3">    |-------------------------------------------------------------------------|
+</span><span id="__span-7-4">    |   1 |   Li |  2.1511516 |   0.000723249 |  -0.000320109 |   0.000403139 |
+</span><span id="__span-7-5">    |   2 |  PF6 |  0.7473276 |  -0.000274995 |  -0.000128144 |  -0.000403139 |
+</span><span id="__span-7-6">    |-------------------------------------------------------------------------|
+</span><span id="__span-7-7">
+</span><span id="__span-7-8">    +----------------- Boltzmann ion concentration and charge -----------------+
+</span><span id="__span-7-9">    |   # | Name | Bulk conc. | Average conc. | Neutr. ratio |    Total charge |
+</span><span id="__span-7-10">    |--------------------------------------------------------------------------|
+</span><span id="__span-7-11">    |   1 |   Li |  2.1511516 |   2.151153746 |     0.820011 |     6.122921628 | 
+</span><span id="__span-7-12">    |   2 |  PF6 |  0.7473276 |   0.747327832 |     0.179989 |    -2.127151420 | 
+</span><span id="__span-7-13">    +--------------------------------------------------------------------------+
+</span><span id="__span-7-14">                                                        total:     3.995770208*
+</span></code></pre></div></td></tr></table></div>
+<p>This tells the user the bulk concentration of each species required to neutralise the surface.
+Note however as this is a grand canonical neutralisation we can have average concentrations greater than 1M.
+This is due to grand canonical neutralisation alowing for a changing number of species in the system, ensuring that the surface is neutralised at all times.</p>
+<p>A final note here is as our calculations are performed within in solvent &amp; electrolyte additional energy components are added to the energy breakdown printed at the end our calculations:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">   ---------------- ENERGY COMPONENTS (Eh) ----------------
+</span><span id="__span-8-2">   | Kinetic                    :      937.59573135429741 |
+</span><span id="__span-8-3">   | Pseudo. (local,PBC,corr'd) :     -443.84297910438869 |
+</span><span id="__span-8-4">   | Pseudopotential (non-local):     -714.75069598392804 |
+</span><span id="__span-8-5">   | Hartree (molecular)        :       41.93332431044017 |
+</span><span id="__span-8-6">   | Exchange-correlation       :     -300.25087260634427 |
+</span><span id="__span-8-7">   | Ewald                      :    20583.02565243620480 |
+</span><span id="__span-8-8">   | Dispersion Correction      :       -0.65678636433385 |
+</span><span id="__span-8-9">   | Smeared ion non-self corr. :   -20592.71568368581570 | 
+</span><span id="__span-8-10">   | Smeared ion self corr.     :     -807.85811781290136 |
+</span><span id="__span-8-11">   | Solvent cavitation energy  :        0.02783765502215 |
+</span><span id="__span-8-12">   | Solute-solvent dis-rep en. :       -0.02001318613680 |
+</span><span id="__span-8-13">   | Elect. mobile ion energy   :       -0.00262591694826 |
+</span><span id="__span-8-14">   | Osmotic pressure energy    :       -0.00778959415557 |
+</span><span id="__span-8-15">   | Acc. corr. (steric) energy :        0.00044786192622 |
+</span><span id="__span-8-16">   | Ionic atmo. rearrang. en.  :        0.00641482442191 |
+</span><span id="__span-8-17">   | Chemical pot. contribution :       -0.00161085245160 |
+</span><span id="__span-8-18">   | Total                      :    -1297.51776666508886 |
+</span><span id="__span-8-19">   |------------------------------------------------------|
+</span><span id="__span-8-20">   | Entropic contribution      :       27.92262959414529 |
+</span><span id="__span-8-21">   | Total free energy          :    -1269.59513707094357 |
+</span><span id="__span-8-22">   --------------------------------------------------------
+</span><span id="__span-8-23">   ------ LOCAL ENERGY COMPONENTS FROM MATRIX TRACES ------
+</span><span id="__span-8-24">   | Pseudopotential (local)    :     -443.84297910438886 |
+</span><span id="__span-8-25">   | Hartree                    :      -24.92214858378443 |
+</span><span id="__span-8-26">   --------------------------------------------------------
+</span><span id="__span-8-27">   |Integrated density          :      543.99576470754505 |
+</span><span id="__span-8-28">   |Integrated spin density     :        0.00000000000165 |
+</span><span id="__span-8-29">   |Integrated |spin density|   :        0.00000001531685 | 
+</span><span id="__span-8-30">   |Local density approx. &lt;S^2&gt; :        0.00000000765765 |
+</span><span id="__span-8-31">   |Integrated density tr(KS)   :      543.99576470754528 |
+</span><span id="__span-8-32">   |Integrated spin tr(KS)      :        0.00000000000153 |
+</span><span id="__span-8-33">   --------------------------------------------------------
+</span></code></pre></div></td></tr></table></div>
+<p>We won't delve into the details of each energy component here, but it is worth noting that the solvent and electrolyte contributions are present in the energy breakdown.
+For a more detailed explanation of each energy component, please refer to <sup id="fnref3:Bhandari2021"><a class="footnote-ref" href="#fn:Bhandari2021">4</a></sup>.</p>
+<h4 id="visualisation">visualisation<a class="headerlink" href="#visualisation" title="Permanent link">¶</a></h4>
+<p>Whilst a majority of the analysis can be conducted using the <code>Li.out</code> file provided, there are a few visualisations that can be conducted using the user generated <code>Li_out_bion_conc_species_1.dx</code> and <code>Li_out_bion_conc_species_2.dx</code> files. 
+Such as plotting the xy-averaged concentration profiles of the electrolyte species, it is worth stating that all code used to generate these plots can be found in the provided Jupyter notebook.</p>
+<figure>
+<p><img _="," alt="image-1" class="center" src="../files/average_concentration_plot.png" width="75%"/></p>
+</figure>
+<!-- .. figure:: _static/tutorial_11/average_concentration_plot.png -->
+<!--    :align: center -->
+<!--    :width: 75% -->
+<p>Looking at the figure above we can see that the concentration of the lithium electrolyte species is highest (12M) at the surface of the electrode, and decreases as we move away from the surface, forming a double layer along our surface.
+In contrary we can observe the PF6 electrolyte species has a concentration approaching 0M at the surface, and increases as we move away from the surface, note that these are local concentrations and not bulk concentrations.</p>
+<p>We can also visualise the densities of our lithium slab and the electrolyte species to illusrate this double layer effect by adding the <code>Li_out_bion_density_total.dx</code> and <code>Li_in_rho.dx</code> files together and running the provided code:</p>
+<figure>
+<p><img _="," alt="image-2" class="center" src="../files/density_slice.png" width="35%"/></p>
+</figure>
+<!-- .. figure:: _static/tutorial_11/density_slice.png -->
+<!--    :align: center -->
+<!--    :width: 35% -->
+<p>Here we can see that there is a positive charge denisty (our lithium ions) at the surface of the electrode, that diffuses in intensity as we move away from the surface.</p>
+<h2 id="where-to-go-next">Where to go next?<a class="headerlink" href="#where-to-go-next" title="Permanent link">¶</a></h2>
+<p>This tutorial has provided a brief overview of the grand canonical formalism, and how it can be employed to conduct potentiostatic calculations, 
+as well as highlighting a few key visualisation techniques that can be conducted on the output files.</p>
+<p>However, there are a few key areas that have not been covered in this tutorial that the reader should explore, such as:</p>
+<ol>
+<li><strong>Defining their reference potentials</strong> (<span class="arithmatex">\(\mu_{\mathrm{e}}^{\mathrm{ref}}\)</span>):</li>
+</ol>
+<p>In this tutorial, we have defined the reference potential as -1.20 eV, however, this value is dependent on the reference electrode of choice, 
+   and can be found in the literature or by calculating one's own reference potential using the method highlighted in <sup id="fnref4:Bhandari2021"><a class="footnote-ref" href="#fn:Bhandari2021">4</a></sup>.</p>
+<ol>
+<li><strong>Cycling through potentials</strong>:</li>
+</ol>
+<p>In this tutorial, we have only conducted a single potentiostatic calculation, however, it is possible to conduct a series of calculations at different potentials, 
+   and calculate properties such as capacitance etc. </p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:Bhandari2020">
+<p>Bhandari, A.; Anton, L.; Dziedzic, J.; Peng, C.; Kramer, D.; Skylaris, C.-K. Electronic Structure Calculations in Electrolyte Solutions: Methods for Neutralization of Extended Charged Interfaces. The Journal of Chemical Physics 2020, 153 (12), 124101. https://doi.org/10.1063/5.0021210. <a class="footnote-backref" href="#fnref:Bhandari2020" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:Fisicaro2017">
+<p>Fisicaro, G.; Genovese, L.; Andreussi, O.; Mandal, S.; Nair, N. N.; Marzari, N.; Goedecker, S. Soft-Sphere Continuum Solvation in Electronic-Structure Calculations. Journal of Chemical Theory and Computation 2017, 13 (8), 3829–3845. https://doi.org/10.1021/acs.jctc.7b00375. <a class="footnote-backref" href="#fnref:Fisicaro2017" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:Larsen2017">
+<p>Hjorth Larsen, A.; Jørgen Mortensen, J.; Blomqvist, J.; Castelli, I. E.; Christensen, R.; Dułak, M.; Friis, J.; Groves, M. N.; Hammer, B.; Hargus, C.; Hermes, E. D.; Jennings, P. C.; Bjerre Jensen, P.; Kermode, J.; Kitchin, J. R.; Leonhard Kolsbjerg, E.; Kubal, J.; Kaasbjerg, K.; Lysgaard, S.; Bergmann Maronsson, J. The Atomic Simulation Environment—a Python Library for Working with Atoms. Journal of Physics: Condensed Matter 2017, 29 (27), 273002. https://doi.org/10.1088/1361-648x/aa680e. <a class="footnote-backref" href="#fnref:Larsen2017" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:Bhandari2021">
+<p>Bhandari, A.; Peng, C.; Dziedzic, J.; Anton, L.; Owen, J. R.; Kramer, D.; Chris-Kriton Skylaris. Electrochemistry from First-Principles in the grand canonical Ensemble. Journal of Chemical Physics 2021, 155 (2). https://doi.org/10.1063/5.0056514. <a class="footnote-backref" href="#fnref:Bhandari2021" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref2:Bhandari2021" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref3:Bhandari2021" title="Jump back to footnote 4 in the text">↩</a><a class="footnote-backref" href="#fnref4:Bhandari2021" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 ONETEP Collective
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="../../../javascripts/mkdocs_exporter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script src="../../../javascripts/katex.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+</body>
+</html>

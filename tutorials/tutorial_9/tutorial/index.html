@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Tutorials for ONTEP." name="description"/>
+<meta content="ONETEP collective" name="author"/>
+<link href="../../tutorial_8/tutorial/" rel="prev"/>
+<link href="../../tutorial_10/tutorial/" rel="next"/>
+<link href="../../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.4" name="generator"/>
+<title>Tutorial 9 - ONETEP Tutorials</title>
+<link href="../../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="light" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tutorial-9-dftu-on-strongly-correlated-magnetic-materials-a-case-study-on-antiferromagnetic-hematite">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="ONETEP Tutorials" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ONETEP Tutorials
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Tutorial 9
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="light" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="dark" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ONETEP Tutorials" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="ONETEP Tutorials">
+<img alt="logo" src="../../../assets/onetep-logo.svg"/>
+</a>
+    ONETEP Tutorials
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Chengcheng-Xiao/onetep-tutorials-mkdocs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    Chengcheng-Xiao/onetep-tutorials-mkdocs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Introduction
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_1/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 1
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_4/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 4
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_5/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 5
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_6/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 6
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_8/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 8
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Tutorial 9
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Tutorial 9
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hematite">
+<span class="md-ellipsis">
+      Hematite
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#magnetism">
+<span class="md-ellipsis">
+      Magnetism
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dftu">
+<span class="md-ellipsis">
+      DFT+U
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input-files">
+<span class="md-ellipsis">
+      Input files
+    </span>
+</a>
+<nav aria-label="Input files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dat">
+<span class="md-ellipsis">
+      Dat
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pseudopotentials">
+<span class="md-ellipsis">
+      Pseudopotentials
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#evaluating-the-outputs">
+<span class="md-ellipsis">
+      Evaluating the outputs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-to-look-for-in-the-main-output-file">
+<span class="md-ellipsis">
+      What to look for in the main output file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dos-and-pdos">
+<span class="md-ellipsis">
+      DOS and PDOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mulliken-population-analysis">
+<span class="md-ellipsis">
+      Mulliken population analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spin-density">
+<span class="md-ellipsis">
+      Spin Density
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-to-do-next">
+<span class="md-ellipsis">
+      What to do next
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_10/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 10
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_11/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 11
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_12/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 12
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_13/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 13
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial_14/tutorial/">
+<span class="md-ellipsis">
+    Tutorial 14
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hematite">
+<span class="md-ellipsis">
+      Hematite
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#magnetism">
+<span class="md-ellipsis">
+      Magnetism
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dftu">
+<span class="md-ellipsis">
+      DFT+U
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setting-up-the-calculations">
+<span class="md-ellipsis">
+      Setting up the calculations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#input-files">
+<span class="md-ellipsis">
+      Input files
+    </span>
+</a>
+<nav aria-label="Input files" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dat">
+<span class="md-ellipsis">
+      Dat
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pseudopotentials">
+<span class="md-ellipsis">
+      Pseudopotentials
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#evaluating-the-outputs">
+<span class="md-ellipsis">
+      Evaluating the outputs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-to-look-for-in-the-main-output-file">
+<span class="md-ellipsis">
+      What to look for in the main output file
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dos-and-pdos">
+<span class="md-ellipsis">
+      DOS and PDOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mulliken-population-analysis">
+<span class="md-ellipsis">
+      Mulliken population analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spin-density">
+<span class="md-ellipsis">
+      Spin Density
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-to-do-next">
+<span class="md-ellipsis">
+      What to do next
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download="Tutorial 9.pdf" href="index.pdf" title="Download as PDF"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14 2 6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8m4 18V9h-5V4H6v16h12m-6-1-4-4h2.5v-3h3v3H16l-4 4Z"></path></svg></a>
+
+<h1 id="tutorial-9-dftu-on-strongly-correlated-magnetic-materials-a-case-study-on-antiferromagnetic-hematite">Tutorial 9: DFT+U on strongly correlated magnetic materials: A case study on antiferromagnetic Hematite<a class="headerlink" href="#tutorial-9-dftu-on-strongly-correlated-magnetic-materials-a-case-study-on-antiferromagnetic-hematite" title="Permanent link">¶</a></h1>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2Zm-.5-2a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V4a.5.5 0 0 0-.5-.5H10a.5.5 0 0 0-.5.5ZM6.17 4.165a.75.75 0 0 1-.335 1.006c-.228.114-.295.177-.315.201a.035.035 0 0 0-.008.016.423.423 0 0 0-.012.112v13c0 .07.008.102.012.112a.03.03 0 0 0 .008.016c.02.024.087.087.315.201a.749.749 0 1 1-.67 1.342c-.272-.136-.58-.315-.81-.598C4.1 19.259 4 18.893 4 18.5v-13c0-.393.1-.759.355-1.073.23-.283.538-.462.81-.598a.75.75 0 0 1 1.006.336ZM2.15 5.624a.75.75 0 0 1-.274 1.025c-.15.087-.257.17-.32.245C1.5 6.96 1.5 6.99 1.5 7v10c0 .01 0 .04.056.106.063.074.17.158.32.245a.75.75 0 0 1-.752 1.298C.73 18.421 0 17.907 0 17V7c0-.907.73-1.42 1.124-1.65a.75.75 0 0 1 1.025.274Z"></path></svg></span> Version: all versions
+<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"></path></svg></span> <a href="mailto:d.sarpa@soton.ac.uk">Davide Sarpa</a></p>
+<!-- [Nicholas D.M. Hine](mailto:N.D.M.Hine@warwick.ac.uk); -->
+<!-- [Chris-Kriton Skylaris](mailto:c.skylaris@soton.ac.uk) -->
+<!-- · :octicons-tag-16: Post-processing | DFT -->
+<!-- :Author: Davide Sarpa -->
+<!-- :Date:   July 2023 -->
+<!-- .. role:: raw-latex(raw) -->
+<!-- :format: latex -->
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p>The goal of the tutorial is to provide a working example on how it is possible to model strongly correlated magnetic materials applying DFT+U methods <sup id="fnref:Anisimov1991"><a class="footnote-ref" href="#fn:Anisimov1991">9</a></sup> <sup id="fnref:Anisimov1997"><a class="footnote-ref" href="#fn:Anisimov1997">10</a></sup> <sup id="fnref:Dudarev1998"><a class="footnote-ref" href="#fn:Dudarev1998">11</a></sup>. We will be working
+with hematite as an example of such materials but the method can be applied to a plethora of materials.</p>
+<h2 id="hematite">Hematite<a class="headerlink" href="#hematite" title="Permanent link">¶</a></h2>
+<p>Hematite is a blood-red iron oxide with formula <span class="arithmatex">\(\alpha-\text{Fe}_2\text{O}_3\)</span>
+ with a melting point of 1350 °C. It belongs to the hexagonal crystal family,
+in particular, it is a Ditrigonal scalenohedral with a <span class="arithmatex">\(R\bar{3}C\)</span> space group (167), sharing the same structure as corundum. The lattice parameters <span class="arithmatex">\(a,b,c\)</span>
+ are <span class="arithmatex">\(a=b=5.0356\)</span> Å and <span class="arithmatex">\(c=13.7489\)</span> Å with 6 formula units per cell with a band
+gap of <span class="arithmatex">\(1.9-2.2\)</span> eV. Its structure is an hpc anion stacking of <span class="arithmatex">\(\text{O}^{2-}\)</span>
+along the [001] direction with <span class="arithmatex">\(\text{Fe}^{3+}\)</span> occupying <span class="arithmatex">\(2/3\)</span> of the
+interstitial octahedrical positions <sup id="fnref:Cornell2003"><a class="footnote-ref" href="#fn:Cornell2003">1</a></sup>. Below the Néel temperature
+(<span class="arithmatex">\(T_N = 963 K\)</span>), <span class="arithmatex">\(\text{Fe}_2\text{O}_3\)</span> is antiferromagnetic with weak
+ferromagnetism. The high-spin <span class="arithmatex">\(d^5\text{Fe}^{3+}\)</span>  cations within one bilayer
+in the (0001) planes are ferromagnetically coupled to each other while
+antiferromagnetically coupled to the adjacent Fe bilayers <sup id="fnref:Parkinson2016"><a class="footnote-ref" href="#fn:Parkinson2016">2</a></sup>. The
+magnetic moment is determined to be <span class="arithmatex">\(4.6\)</span> <span class="arithmatex">\(\mu_{B}\)</span>  per atom. The upper edge
+of the valence band is dominated by oxygen p states, while the bottom of the
+conduction band is dominated by Fe d states. Hematite is generally considered
+to be a charge transfer rather than a Mott-Hubbard insulator <sup id="fnref:Naveas2023"><a class="footnote-ref" href="#fn:Naveas2023">3</a></sup>
+<sup id="fnref:Huang2016"><a class="footnote-ref" href="#fn:Huang2016">4</a></sup> <sup id="fnref:Si2020"><a class="footnote-ref" href="#fn:Si2020">5</a></sup>.</p>
+<figure>
+<p align="center">
+<img src="../files/Fe4O6.png" width="15%"/>
+<img src="../files/Fe12O18.png" width="25%"/>
+</p>
+<figcaption>Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red.</figcaption>
+</figure>
+<!-- |pic1| |pic2| -->
+<!-- .. |pic1| image:: _static/tutorial_9/Fe4O6.png -->
+<!-- :width: 15% -->
+<!-- .. |pic2| image:: _static/tutorial_9/Fe12O18.png -->
+<!-- :width: 25% -->
+<!-- Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red. -->
+<h2 id="magnetism">Magnetism<a class="headerlink" href="#magnetism" title="Permanent link">¶</a></h2>
+<p>The weak ferromagnetism is due to spin-canting which is a relativistic effect.
+Luckily for us it is possible to obtain Hematite in an antiferromagnetic state with magnetic moments close to
+the experimental values by properly setting up the simulation without the need to include relativistic effects explicitly.</p>
+<p>If we consider the primitive hematite cell along the Z axis there are 3 possible different antiferromagnetic states:</p>
+<ul>
+<li><span class="arithmatex">\(+-+-\)</span> (up-down-up-down)</li>
+<li><span class="arithmatex">\(++--\)</span> (up-up-down-down)</li>
+<li><span class="arithmatex">\(+--+\)</span> (up-down-down-up)</li>
+</ul>
+<p>Out of all these states the last one (<span class="arithmatex">\(+--+\)</span>) is the ground state, we would like to be able to force our system to end up
+Out of all these states the last one (<span class="arithmatex">\(+--+\)</span>) is the ground state, we would like to be able to force our system to end up
+in the ground state.</p>
+<figure>
+<p><img _="," alt="image_3" class="center" src="../files/magnetism.png" width="15%"/>
+</p>
+<figcaption>Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration.</figcaption>
+</figure>
+<!-- .. figure:: _static/tutorial_9/magnetism.png -->
+<!-- :align: center -->
+<!-- :scale: 40% -->
+<!-- Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration. -->
+<p>Magnetic systems are challenging to model due to the existence of very many different local minima which, in most cases, are very close in energy
+Forcing the system into a specific state may not be easy, but there are methods that can help us achieve what we want.</p>
+<h2 id="dftu">DFT+U<a class="headerlink" href="#dftu" title="Permanent link">¶</a></h2>
+<p>The problem of DFT to describe correlated systems can be attributed to the tendency of xc functionals to over-delocalize valence electrons and to over-stabilize metallic ground states,
+this prevents materials like Hematite to be described by DFT. LDA and GGA both predict hematite to be a metallic system and they also underestimate local magnetic moments.
+The reason behind this delocalization is rooted to the inability of the approximated xc to completely cancel out the electronic self-interaction contained in the Hartree term.
+The main advantage of the DFT+U method is that it is within the realm of DFT, thus does not require significant effort to be implemented in the existing DFT codes and its computational cost is only slightly higher than that of normal DFT computations.</p>
+<p>DFT+U treats the d and f orbitals as localised while keep the rest at the delocalised LDA/GGA level. In order to do that it projects the bands into localised orbitals and compute a new potential.
+The DFT+U method can be used to penalise the non-integer occupancy of these orbitals, tending to fill states with occupancy greater than 0.5 and empty states with occupancy less than 0.5.</p>
+<div class="arithmatex">\[
+   \hat{V}^{(\sigma)}_{DFT+U} = \sum_{I}  U^{(I)}\lvert \varphi_m^{(I)} \rangle (\frac{1}{2} \delta_{m m'} - n^{(I) (\sigma)}_{m m'})  \langle\varphi_{m'}^{(I)} \rvert
+\]</div>
+<p>The U and J values are screened Coloumb and Exchange terms which are system and implementation dependent. In general, you are not able to plug and play
+an U or J value from the literature. What is usually done it's empirically testing different values (run multiple calculations with different combination of U and J) or
+most software (including ONETEP) have a linear response theory implementation to calculate the parameters from first principles <sup id="fnref:O-Regan2010"><a class="footnote-ref" href="#fn:O-Regan2010">8</a></sup> <sup id="fnref:O-Regan2012"><a class="footnote-ref" href="#fn:O-Regan2012">6</a></sup> <sup id="fnref:Cococcioni2005"><a class="footnote-ref" href="#fn:Cococcioni2005">7</a></sup>.</p>
+<h2 id="setting-up-the-calculations">Setting up the calculations<a class="headerlink" href="#setting-up-the-calculations" title="Permanent link">¶</a></h2>
+<p>Now we start with the actual tutorial, we will setup a bulk hematite simulation where we
+apply a DFT+U correction on the d orbitals of the iron atom. We also have to label atoms based on their spin
+which allow us to assign different parameters for spin down and spin up Fe atoms. This will help us
+achieve the AFM state we are looking for. We will see what we should look out in an output and what are
+the interesting properties for this material.</p>
+<p>You will see that the cell and atoms we are using are neither from a primitive or a conventional cell, It is a orthogonal 3x2x1 supercell and this because orthogonal cell are easier to deal with and
+due to having 11 bohr radius NGWFs we need to have bigger cells.</p>
+<h2 id="input-files">Input files<a class="headerlink" href="#input-files" title="Permanent link">¶</a></h2>
+<p>ONETEP requires different files to work properly.</p>
+<ol>
+<li>A .dat file which contains all the information about your sytem (positions and cell) and the simulations parameters</li>
+<li>Pseudopotentials files, we will be using on the fly generated by CASTEP, but you could use your favourites.</li>
+</ol>
+<p>All the files needed for the simulation can be downloaded from:</p>
+<ul>
+<li><a href="../files/Fe_NCP19_PBE_OTF.usp"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span>Fe_NCP19_PBE_OTF.usp</a></li>
+<li><a href="../files/O_NCP19_PBE_OTF.usp"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span>O_NCP19_PBE_OTF.usp</a></li>
+<li><a href="../files/hematite.out"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span>hematite.out</a></li>
+<li><a href="../files/hematite.dat"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"></path></svg></span>hematite.dat</a></li>
+</ul>
+<h3 id="dat">Dat<a class="headerlink" href="#dat" title="Permanent link">¶</a></h3>
+<p>The first two blocks are the cell and atoms positions.
+You might see that iron atoms are labelled Fe1 or Fe2 depending if they will be treated as spin up atoms or spin down atoms.</p>
+<p>The third block is
+</p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">%BLOCK SPECIES
+</span><span id="__span-0-2">  Fe1 Fe 26 13 11.000000
+</span><span id="__span-0-3">  Fe2 Fe 26 13 11.000000
+</span><span id="__span-0-4">  O O 8 4 11.000000
+</span><span id="__span-0-5">%ENDBLOCK SPECIES
+</span></code></pre></div></td></tr></table></div>
+This block tells us which atom type we should assing to Fe1, Fe2, and O, their atomic number and how many NGWFS we should use for each atom type as well as their radius.
+For strongly correlated systems NGWFs radius of 11.00 bohr is suggested.
+The next block is
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">%BLOCK SPECIES_ATOMIC_SET
+</span><span id="__span-1-2">  Fe1 "SOLVE conf=3s2 3p6 3d5 4s0 4p0 SPIN=+5 CHARGE=+3"
+</span><span id="__span-1-3">  Fe2 "SOLVE conf=3s2 3p6 3d5 4s0 4p0 SPIN=-5 CHARGE=+3"
+</span><span id="__span-1-4">  O  "SOLVE INIT SPIN=0 CHARGE=-1"
+</span><span id="__span-1-5">%ENDBLOCK SPECIES_ATOMIC_SET
+</span></code></pre></div></td></tr></table></div>
+This block setup the initial configurations for the atoms. Fe1 and Fe2 atoms will have a charge of +3 and a spin of + or - 5. We have also setup
+the electronic configurations. The atomic solver generates the first guess for the density kernel for the first scf iteration, it does it by calculating the atomic density.
+<p>The next block is the Hubbard block where we setup the DFT+U parameters
+</p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">%block hubbard
+</span><span id="__span-2-2">  Fe1 2 6.0 0.0 -10.0 0.00 5.0
+</span><span id="__span-2-3">  Fe2 2 6.0 0.0 -10.0 0.00 -5.0
+</span><span id="__span-2-4">%endblock hubbard
+</span></code></pre></div></td></tr></table></div>
+In this block we setup on the d (l=2) orbitals a U value of 6 the rest are the default parameters except the last column (5,-5).
+The last column is the spin-splitting functionality that help certain system to break the spin symmetry in AFM configurations.
+<p>The rest of the blocks are to tell ONETEP for which atom types it has to compute the ldos and dos. Related to this functionality we also have to paratemers called dos_smear and pdos_max_l. The First
+relates to the gaussian smearing applied to the dos and the max l quantum number to compute the pdos for.</p>
+<p>The rest of the parameters are self-explanatory with some exception such as maxit_palser_mano and maxit_hotelling which are related to the diagonalisation library.</p>
+<p>If require more explanation you can refer to the ONETEP keyword database.</p>
+<h3 id="pseudopotentials">Pseudopotentials<a class="headerlink" href="#pseudopotentials" title="Permanent link">¶</a></h3>
+<p>It is important to know is that the number of NGWFs depends on your Pseudopotentials.
+If you use your own be sure to modify them.</p>
+<h2 id="evaluating-the-outputs">Evaluating the outputs<a class="headerlink" href="#evaluating-the-outputs" title="Permanent link">¶</a></h2>
+<p>ONETEP will generate many files based on we configured the calculations, but for this
+tutorial we will be focusing on few ones.</p>
+<ul>
+<li><code>.out</code>: the main output file</li>
+<li><code>DOS.txt</code>: Density of states file</li>
+<li><code>LDOS.txt</code>: Local density of states file</li>
+<li><code>PDOS.txt</code>: Partial density of states file</li>
+<li><code>spindensity.cube</code>: Cube file necessary to visualise the spin density</li>
+</ul>
+<h2 id="what-to-look-for-in-the-main-output-file">What to look for in the main output file<a class="headerlink" href="#what-to-look-for-in-the-main-output-file" title="Permanent link">¶</a></h2>
+<p>First thing is to check is the whether the atoms are in the configuration you wanted to (in our case a <span class="arithmatex">\(\text{Fe}^{3+}\)</span> with spin UP or DOWN).
+This can be seen by looking for this block for each atom (shown here the down Fe atom)
+</p><div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">Config String: 3s2 3p6 3d5 4s0 4p0 SPIN=-5 CHARGE=+3
+</span><span id="__span-3-2">Orbitals (num,occ):  5     2.00 6.00 5.00 0.00 0.00
+</span><span id="__span-3-3">Orbitals   (num,l):  5        0    1    2    0    1
+</span></code></pre></div></td></tr></table></div>
+As you can see it was properly set as we have the occupancies as we wanted them to be
+<p>The second step is, as explained in the DFT+U part, the occupancies for the majority spin (either UP or DOWN for different Fe atoms)
+has to be <span class="arithmatex">\(&gt; 0.5\)</span> while <span class="arithmatex">\(&lt; 0.5\)</span> for the minority spin. This is very important to allow DFT+U to do its job and it can be checked in the following table by looking at the diagonal elements.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">#################################################################
+</span><span id="__span-4-2">DFT+U information on atom      1 of Hubbard species Fe1
+</span><span id="__span-4-3">#################################################################
+</span><span id="__span-4-4">Occupancy matrix of Hubbard site      1 and spin      1 is
+</span><span id="__span-4-5">   m_l =   -2          -1           0           1           2
+</span><span id="__span-4-6">   0.98677750  0.00064944  0.00008254 -0.00024296 -0.00055787
+</span><span id="__span-4-7">   0.00064545  0.99097329 -0.00010565  0.00019818  0.00042874
+</span><span id="__span-4-8">   0.00006971 -0.00009587  0.97935271  0.00006742  0.00560449
+</span><span id="__span-4-9">   -0.00024459  0.00020075  0.00009975  0.99062614 -0.00144761
+</span><span id="__span-4-10">   -0.00055154  0.00042561  0.00602074 -0.00142407  0.96101391
+</span><span id="__span-4-11">#################################################################
+</span><span id="__span-4-12">Occupancy matrix of Hubbard site      1 and spin      2 is
+</span><span id="__span-4-13">   m_l =   -2          -1           0           1           2
+</span><span id="__span-4-14">   0.17854088 -0.10543254 -0.00014018 -0.01900359 -0.00209684
+</span><span id="__span-4-15">   -0.10478392  0.27925352 -0.00100259  0.00081665 -0.01300318
+</span><span id="__span-4-16">   -0.00018286 -0.00127346  0.07647309  0.00442738  0.00630459
+</span><span id="__span-4-17">   -0.01913097  0.00082721  0.00279433  0.25746916  0.08014266
+</span><span id="__span-4-18">   -0.00208260 -0.01299767  0.00576137  0.07901457  0.10302424
+</span><span id="__span-4-19">#################################################################
+</span><span id="__span-4-20">Total occupancy of Hubbard site      1 is         5.80350444 e
+</span><span id="__span-4-21">Local magnetic moment of Hubbard site      1 is   4.01398264 mu_B
+</span><span id="__span-4-22">DFT+U energy of Hubbard site      1 is            0.08324891 Ha
+</span><span id="__span-4-23">#################################################################
+</span></code></pre></div></td></tr></table></div>
+<p>Another important thing to check are the bands occupancies. Hematite is a semiconductor
+with a 2 eV band gap, we would then expect to have fully occupied bands and unoccupied virtual bands.
+If we were to treat it as a metal we could expect fractional occupancies occurring, but that would be physically wrong for our system.</p>
+<p>If you look at the band occupancies for both spin up and down, you can see that we indeed obtain fully occupied bands and unoccupied bands. This reassure us that the structure
+we obtained is chemically and physically sensible. The small number you see in the "unoccupied" bands is due to numerical errors.</p>
+<p>This is for spin 1 (up)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">Orbital | Energy (Eh) | Occupancy
+</span><span id="__span-5-2">
+</span><span id="__span-5-3">1    -3.063849888   1.0000000
+</span><span id="__span-5-4">.......   ...........   .........
+</span><span id="__span-5-5">1791     0.357172741   0.9999996
+</span><span id="__span-5-6">1792     0.357225976   0.9999996
+</span><span id="__span-5-7">1793     0.357724185   0.9999996
+</span><span id="__span-5-8">1794     0.357733628   0.9999996
+</span><span id="__span-5-9">1795     0.358380935   0.9999997
+</span><span id="__span-5-10">1796     0.358393032   0.9999997
+</span><span id="__span-5-11">1797     0.360316821   0.9999996
+</span><span id="__span-5-12">1798     0.360327604   0.9999996
+</span><span id="__span-5-13">1799     0.366378308   0.9999993
+</span><span id="__span-5-14">1800     0.366387961   0.9999993
+</span><span id="__span-5-15">....... -- gap at 0K -- .........
+</span><span id="__span-5-16">1801     0.438702297   0.0000005
+</span><span id="__span-5-17">1802     0.438704363   0.0000005
+</span><span id="__span-5-18">1803     0.438802525   0.0000005
+</span><span id="__span-5-19">1804     0.438803496   0.0000005
+</span></code></pre></div></td></tr></table></div>
+<p>This is for spin 2 (down)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">Orbital | Energy (Eh) | Occupancy
+</span><span id="__span-6-2">1    -3.062779703   1.0000000
+</span><span id="__span-6-3">.......   ...........   .........
+</span><span id="__span-6-4">1791     0.357161543   0.9999996
+</span><span id="__span-6-5">1792     0.357225094   0.9999996
+</span><span id="__span-6-6">1793     0.357691641   0.9999996
+</span><span id="__span-6-7">1794     0.357691940   0.9999996
+</span><span id="__span-6-8">1795     0.358354526   0.9999997
+</span><span id="__span-6-9">1796     0.358355045   0.9999997
+</span><span id="__span-6-10">1797     0.360301824   0.9999996
+</span><span id="__span-6-11">1798     0.360302485   0.9999996
+</span><span id="__span-6-12">1799     0.366369520   0.9999993
+</span><span id="__span-6-13">1800     0.366387326   0.9999993
+</span><span id="__span-6-14">....... -- gap at 0K -- .........
+</span><span id="__span-6-15">1801     0.438975662   0.0000005
+</span><span id="__span-6-16">1802     0.438982779   0.0000005
+</span><span id="__span-6-17">1803     0.439082674   0.0000005
+</span><span id="__span-6-18">1804     0.439094865   0.0000005
+</span></code></pre></div></td></tr></table></div>
+<p>And as last we should also check that we obtain a band gap and its value is close to experiment.
+This can be seen from the output by looking for these lines.</p>
+<p>Why do we get two band gaps? Because we are studying a magnetic system, we get a band gap for each spin channel and for an AFM material
+the bandgap should be the same (numerical errors aside).</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">HOMO-LUMO gap:       0.072314337 Eh
+</span><span id="__span-7-2">HOMO-LUMO gap:       0.072588336 Eh
+</span></code></pre></div></td></tr></table></div>
+<h2 id="dos-and-pdos">DOS and PDOS<a class="headerlink" href="#dos-and-pdos" title="Permanent link">¶</a></h2>
+<p>Next step is to plot the density of states. It will tell us the distribution of electrons and states in our system
+we would expect to have gap around 0 of about 2 eV as this is the band gap of the material.</p>
+<figure>
+<p><img _="," alt="image_4" class="center" src="../files/DOS.png" width="45%"/></p>
+</figure>
+<!-- <figcaption>Fig.2: Ground state antiferromagnetic state for hematite in primitive cell, Fe1 labels iron with up spin configuration, Fe2 for down spin configuration.</figcaption> -->
+<!-- .. figure:: _static/tutorial_9/DOS.png -->
+<!-- :align: center -->
+<!-- :width: 45% -->
+<p>We indeed obtain a gap between the states but it does not tell us much more. To obtain more information we will be plotting the local density of states (LDOS)
+and the partial density of states (PDOS).</p>
+<figure>
+<p align="center">
+<img src="../files/LDOS.png" width="45%"/>
+<img src="../files/PDOS.png" width="45%"/>
+</p>
+</figure>
+<!-- <figcaption>Fig.1: Primitive rhombohedral cell (left), Conventional hexagonal cell (right). Iron atoms in brown, oxygen in red.</figcaption> -->
+<!-- |ldos| |pdos| -->
+<!-- .. |ldos| image:: _static/tutorial_9/LDOS.png -->
+<!-- :width: 45% -->
+<!-- .. |pdos| image:: _static/tutorial_9/PDOS.png -->
+<!-- :width: 45% -->
+<p>From the local density of states we can immediately notice that the lowest lying bands in the plot are mostly made of Fe1 bands but,
+this is very important, the top of the valence band is made mostly by O bands. The bottom of the conduction band is made of Fe2 orbitals.
+This allow us to classify hematite as a charge transfer insulator between the oxygen and the iron atoms. What if we would like to know which atomic orbitals
+contribute the most in this charge transfering? We need to plot the PDOS.</p>
+<p>It will project the bands into the atomic components, in this way, as you can see in the graph the top of the valence band
+is dominated by O 2p states while the bottom of the conduction band by Fe2 3d states.</p>
+<h2 id="mulliken-population-analysis">Mulliken population analysis<a class="headerlink" href="#mulliken-population-analysis" title="Permanent link">¶</a></h2>
+<p>The Mulliken population analysis is a very good tool to understand if our system is behaving correctly.
+In an AFM material the total spin should be 0 and the local spin should be the same for the same atoms. In this case we have two different types
+The spin up and down Fe atoms. The absolute value of the local spin should be the same with just different signs.</p>
+<p>The material is also charge neutral and we would expect that the similar atoms should carry similar charges.</p>
+<table>
+<thead>
+<tr>
+<th>Species</th>
+<th>Ion</th>
+<th>Total</th>
+<th>Charge (e)</th>
+<th>Spin (hbar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>6.906</td>
+<td>-0.906</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>6.906</td>
+<td>-0.906</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>0</td>
+<td>3</td>
+<td>6.906</td>
+<td>-0.906</td>
+<td>-0.01</td>
+</tr>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>6.905</td>
+<td>-0.905</td>
+<td>-0.01</td>
+</tr>
+<tr>
+<td>0</td>
+<td>5</td>
+<td>6.906</td>
+<td>-0.906</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>0</td>
+<td>6</td>
+<td>6.907</td>
+<td>-0.907</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>7</td>
+<td>14.641</td>
+<td>1.359</td>
+<td>2.20</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>8</td>
+<td>14.641</td>
+<td>1.359</td>
+<td>2.20</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>9</td>
+<td>14.641</td>
+<td>1.359</td>
+<td>-2.20</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>10</td>
+<td>14.641</td>
+<td>1.359</td>
+<td>-2.20</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see from this snapshot we do indeed obtain the same charge and same spin for all similar atoms as
+we would expect.</p>
+<h2 id="spin-density">Spin Density<a class="headerlink" href="#spin-density" title="Permanent link">¶</a></h2>
+<p>Now it is time to visualise the spin density which is the total electron density of electrons of one spin minus
+the total electron density of the electrons of the other spin.
+We would like to visualise it to know if we obtained the afm state we wanted, the up-down-down-up configuration.</p>
+<p>You can directly open and visualise The .cube generated at the end of the calculations with VESTA, VMD or lots of other softwares.</p>
+<figure>
+<p><img _="," alt="image_5" class="center" src="../files/hematite_spindensity.png" width="30%"/>
+</p>
+<figcaption>Fig.3: Hematite spin density, blu spheres refers to atom with up spin and yellow to down spin</figcaption>
+</figure>
+<!-- .. figure:: _static/tutorial_9/hematite_spindensity.png -->
+<!-- :align: center -->
+<!-- :scale: 30% -->
+<!-- Fig.2: Hematite spin density, blu spheres refers to atom with up spin and yellow to down spin -->
+<p>You can see from the picture that we did get the AFM states with +--+ configuration as we wanted.</p>
+<h2 id="what-to-do-next">What to do next<a class="headerlink" href="#what-to-do-next" title="Permanent link">¶</a></h2>
+<p>The tutorial is now complete, but you could still move forward. What can you do next?</p>
+<p>ONETEP outputs many. more information than the one showed you here.</p>
+<p>You can plot</p>
+<ul>
+<li>The electrostatic potential</li>
+<li>The orbitals</li>
+<li>The electron density</li>
+<li>The band plot</li>
+</ul>
+<p>You can then relax the structure and recompute the properties to see what changed and how.</p>
+<p>We have chosen to use U=6, but you could try different U values and see how it affects the system.</p>
+<!-- ## References -->
+
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:Cornell2003">
+<p>R.M.Cornell et al, in The Iron Oxides, John Wiley &amp; Sons, Ltd, 2003, pp. 9-38. <a class="footnote-backref" href="#fnref:Cornell2003" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:Parkinson2016">
+<p>G.S.Parkinson, Surface Science Reports, vol. 71, no. 1, pp. 272–365, 1 Mar. 1, 2016. <a class="footnote-backref" href="#fnref:Parkinson2016" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:Naveas2023">
+<p>Naveas M. et al, iScience 26, 106033, February 17, 2023. <a class="footnote-backref" href="#fnref:Naveas2023" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+<li id="fn:Huang2016">
+<p>Huang X. et al,  J.Phys.Chem C 2016,  120, 4919-4930. <a class="footnote-backref" href="#fnref:Huang2016" title="Jump back to footnote 4 in the text">↩</a></p>
+</li>
+<li id="fn:Si2020">
+<p>Si et al, J. Chem. Phys. 152, 024706 (2020). <a class="footnote-backref" href="#fnref:Si2020" title="Jump back to footnote 5 in the text">↩</a></p>
+</li>
+<li id="fn:O-Regan2012">
+<p>D.D.O’Regan, N. D. M. Hine, M. C. Payne and A. A. Mostofi, Phys. Rev. B 85, 085107 (2012). <a class="footnote-backref" href="#fnref:O-Regan2012" title="Jump back to footnote 6 in the text">↩</a></p>
+</li>
+<li id="fn:Cococcioni2005">
+<p>M.Cococcioni and S. de Gironcoli, Phys. Rev. B 71, 035105 (2005). <a class="footnote-backref" href="#fnref:Cococcioni2005" title="Jump back to footnote 7 in the text">↩</a></p>
+</li>
+<li id="fn:O-Regan2010">
+<p>D.D.O’Regan, N. D. M. Hine, M. C. Payne and A. A. Mostofi, Phys. Rev. B 82, 081102 (2010). <a class="footnote-backref" href="#fnref:O-Regan2010" title="Jump back to footnote 8 in the text">↩</a></p>
+</li>
+<li id="fn:Anisimov1991">
+<p>J.Z.V.I. Anisimov and O. K. Andersen, Phys. Rev. B 44, 943 (1991). <a class="footnote-backref" href="#fnref:Anisimov1991" title="Jump back to footnote 9 in the text">↩</a></p>
+</li>
+<li id="fn:Anisimov1997">
+<p>V.I. Anisimov, F. Aryasetiawan, and A. I. Liechtenstein, J. Phys.: Condens. Matter 9, 767 (1997). <a class="footnote-backref" href="#fnref:Anisimov1997" title="Jump back to footnote 10 in the text">↩</a></p>
+</li>
+<li id="fn:Dudarev1998">
+<p>S.L. Dudarev, Phys. Rev. B 57, 3 (1998). <a class="footnote-backref" href="#fnref:Dudarev1998" title="Jump back to footnote 11 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 ONETEP Collective
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="../../../javascripts/mkdocs_exporter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script src="../../../javascripts/katex.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+</body>
+</html>
